@@ -1,0 +1,12 @@
+alias vimalias='mvim ~/.zsh/aliases'
+
+alias t='tail -f'
+
+alias rp='touch tmp/restart.txt'
+alias rc='rails console'
+alias lsa='ls -a'
+alias cw='compass --watch'
+
+alias gw='gem which'
+alias sys='rvm use system'
+

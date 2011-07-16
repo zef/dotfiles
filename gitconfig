@@ -1,0 +1,30 @@
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[user]
+	name = Zef Houssney
+	email = zef@madebykiwi.com
+[core]
+	excludesfile = /Users/zef/.gitignore
+[alias]
+   c = commit -am
+   br = branch
+   co = checkout
+   st = status
+   master = checkout master
+   ai = add --interactive
+   gl = log --pretty=format:'%C(yellow)%h%C(reset) | %an | %ar | %C(cyan)%s%C(reset)%d' --topo-order --graph --decorate
