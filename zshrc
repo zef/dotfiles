@@ -27,16 +27,15 @@ export ZSH_THEME="edvardm"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby osx)
+plugins=(git rvm gem rails3 osx bundler pow)
 
 source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh/aliases
 [[ -f ~/.zsh/local ]] && source ~/.zsh/local
 
-
 # Customize to your needs...
-export PATH=/Users/zef/.rvm/gems/ruby-1.9.2-p180/bin:/Users/zef/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/zef/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/zef/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/graphviz-2.14/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/Users/zef/rails/scripts/executables:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin
+export PATH=/Users/zef/code/executables:/Users/zef/.rvm/gems/ruby-1.9.2-p180/bin:/Users/zef/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/zef/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/zef/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/graphviz-2.14/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/Users/zef/rails/scripts/executables:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin
 
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

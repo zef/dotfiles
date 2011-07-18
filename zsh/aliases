@@ -1,5 +1,7 @@
 alias vimalias='mvim ~/.zsh/aliases'
 
+alias rvm='nocorrect rvm'
+
 alias t='tail -f'
 
 alias rp='touch tmp/restart.txt'
@@ -9,4 +11,5 @@ alias cw='compass --watch'
 
 alias gw='gem which'
 alias sys='rvm use system'
+
 
