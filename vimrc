@@ -51,12 +51,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " Move lines up and down single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-imap <C-Up> <esc>[ea
-imap <C-Down> <esc>]ea
+nmap <D-Up> [e
+nmap <D-Down> ]e
+vmap <D-Up> [egv
+vmap <D-Down> ]egv
+imap <D-Up> <esc>[ea
+imap <D-Down> <esc>]ea
 
 " TextMate-like indent/outdent
 nmap <D-[> <<
@@ -66,6 +66,9 @@ vmap <D-]> >gv
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
+
+" Search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Allow holding command to move directionally on lines with soft line breaks
 vmap <D-j> gj
@@ -125,8 +128,28 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" see http://vimcasts.org/episodes/tidying-whitespace/
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+function! <SID>StripTrailingWhitespaces()
+  call Preserve("%s/\\s\\+$//e")
+endfunction
+
+
+" remove trailing whitespace
+nmap _$ :call <SID>StripTrailingWhitespaces()<CR>
+" fix indentation for entire file
 nmap _= :call Preserve("normal gg=G")<CR>
 
 set spelllang=en_us
@@ -134,8 +157,6 @@ set spelllang=en_us
 " required for ruby blocks as text-objects
 runtime macros/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""
-
-
 
 
 " allow backspacing over everything in insert mode
@@ -207,6 +228,8 @@ if has("autocmd")
 
   " autocmd! BufWritePost .vimrc source $MYVIMRC
 
+  " remove trailing whitespace on save
+  autocmd BufWritePre *.sass,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
 
   augroup END
 

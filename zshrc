@@ -4,6 +4,8 @@ export ZSH=$HOME/.oh-my-zsh
 export EDITOR='mvim -f'
 export GEM_OPEN_EDITOR='mvim'
 
+code=~/code
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
