@@ -27,6 +27,7 @@ set nowrap
 set linebreak
 set autoread
 
+
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
@@ -66,6 +67,14 @@ vmap <D-]> >gv
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
+
+" wrap selected text in ruby interpolation and move to end of it
+vmap <c-i> s}i#<esc>f}
+" insert ruby interpolation
+imap <c-i> #{}<esc>i
+
+" wrap with html link
+vmap <c-l> sta href=""<CR>f"a
 
 " Search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
