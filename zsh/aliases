@@ -1,6 +1,8 @@
 alias vimalias='mvim ~/.zsh/aliases'
 
 alias rvm='nocorrect rvm'
+alias node='nocorrect node'
+alias npm='nocorrect npm'
 
 alias t='tail -f'
 
