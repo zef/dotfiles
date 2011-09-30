@@ -37,6 +37,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/aliases
 [[ -f ~/.zsh/local ]] && source ~/.zsh/local
 
+setopt auto_cd
+cdpath=($HOME/code)
+
 # Customize to your needs...
 export PATH=/Users/zef/code/executables:/Users/zef/.rvm/gems/ruby-1.9.2-p180/bin:/Users/zef/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/zef/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/zef/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/graphviz-2.14/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/mongodb/bin:/Users/zef/rails/scripts/executables:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin
 
