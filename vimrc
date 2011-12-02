@@ -71,7 +71,7 @@ nmap gV `[v`]
 " wrap selected text in ruby interpolation and move to end of it
 vmap <c-i> s}i#<esc>f}
 " insert ruby interpolation
-imap <c-i> #{}<esc>i
+" imap <c-i> #{}<esc>i
 
 " wrap with html link
 vmap <c-l> sta href=""<CR>f"a

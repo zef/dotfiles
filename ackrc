@@ -1,0 +1,8 @@
+# only search with case sensitivity if there is mixed case
+--smart-case
+# follow symlinks
+--follow
+
+--type-add=html=.haml,.liquid
+--type-add=css=.sass
+

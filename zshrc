@@ -3,6 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 export EDITOR='mvim -f'
 export GEM_OPEN_EDITOR='mvim'
+export BUNDLER_EDITOR='mvim'
 export NODE_PATH='/usr/local/lib/node'
 
 code=~/code
