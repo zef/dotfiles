@@ -123,9 +123,9 @@ snippet i18
 	I18n.t('${1:type.key}')${2}
 snippet ist
 	<%= image_submit_tag("<+agree.png+>"<+<+, :id => "<+id+>"+><+, :name => "<+name+>"+><+, :class => "<+class+>"+><+, :disabled => <+false+>+>+>) %>
+snippet rlog
+	Rails.logger.${1:debug} ${2}
 snippet log
-	RAILS_DEFAULT_LOGGER.${1:debug} ${2}
-snippet logd
 	logger.debug { "${1:message}" }${2}
 snippet loge
 	logger.error { "${1:message}" }${2}
