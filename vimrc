@@ -26,12 +26,8 @@ set smartcase
 set nowrap
 set linebreak
 set autoread
+set scrolloff=5
 
-
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-map <D-R> :NERDTreeFind<CR>
-let NERDTreeDirArrows = 1
 
 " might want to make this maintain selection in visual mode
 map <D-/> :TComment<CR>
@@ -39,7 +35,7 @@ map <D-/> :TComment<CR>
 " the movement, I'll assume that it's at least 2 charachters though for now.
 inoremap <D-/> <esc>:TComment<CR>2la
 
-" new line above and below from insert mode
+" create new line above/below from insert mode
 inoremap <D-CR> <esc>o
 inoremap <S-CR> <esc>O
 
@@ -68,16 +64,8 @@ vmap <D-]> >gv
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
-" wrap selected text in ruby interpolation and move to end of it
-vmap <c-i> s}i#<esc>f}
-" insert ruby interpolation
-" imap <c-i> #{}<esc>i
-
-" wrap with html link
-vmap <c-l> sta href=""<CR>f"a
-
 " Search and replace word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Allow holding command to move directionally on lines with soft line breaks
 vmap <D-j> gj
@@ -91,6 +79,18 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
+" wrap selected text in ruby interpolation and move to end of it
+vmap <c-i> s}i#<esc>f}
+" insert ruby interpolation
+" imap <c-i> #{}<esc>i
+
+" wrap with html link
+vmap <c-l> sta href=""<CR>f"a
+
+" NERDTree
+map <Leader>n :NERDTreeToggle<CR>
+map <D-R> :NERDTreeFind<CR>
+let NERDTreeDirArrows = 1
 
 " function! CleanHTML()
 "   return substitute('%', "’", "'", 'g')
@@ -98,15 +98,20 @@ nmap <D-0> g^
 "   ”
 " endfunction
 
+" See /Applications/MacVim.app/Contents/Resources/vim/gvimrc
 " makes shift selection possible in insert mode
 if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
-  
+
   " include rL for scrollbars, trying it out without for now...
   set guioptions=aAegmt
 
   let macvim_hig_shift_movement = 1
+
+  " This was getting in the way of some of my mappings, I could not override
+  " them without manually sourcing $MYVIMRC
+  let macvim_skip_cmd_opt_movement = 1
 endif
 
 nnoremap <esc> :noh<return><esc>
@@ -126,6 +131,15 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
+
+function! <SID>StripTrailingWhitespaces()
+  call Preserve("%s/\\s\\+$//e")
+endfunction
+
+" remove trailing whitespace
+nmap _$ :call <SID>StripTrailingWhitespaces()<CR>
+" fix indentation for entire file
+nmap _= :call Preserve("normal gg=G")<CR>
 
 " http://vimcasts.org/episodes/creating-colorschemes-for-vim/
 " Show syntax highlighting groups for word under cursor
@@ -150,23 +164,11 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-
-function! <SID>StripTrailingWhitespaces()
-  call Preserve("%s/\\s\\+$//e")
-endfunction
-
-
-" remove trailing whitespace
-nmap _$ :call <SID>StripTrailingWhitespaces()<CR>
-" fix indentation for entire file
-nmap _= :call Preserve("normal gg=G")<CR>
-
 set spelllang=en_us
 
 " required for ruby blocks as text-objects
 runtime macros/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""
-
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -211,41 +213,38 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
-    " Set File type to 'text' for files ending in .txt
+  " Set File type to 'text' for files ending in .txt
   autocmd BufNewFile,BufRead *.txt setfiletype text
 
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
-
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
+    au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \\\\ if line("'\\\\"") > 1 && line("'\\\\"") <= line("$") |
-    \\\\   exe "normal! g`\\\\"" |
-    \\\\ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+          \ if line("'\"") > 1 && line("'\"") <= line("$") |
+          \   exe "normal! g`\"" |
+          \ endif
 
-  " autocmd! BufWritePost .vimrc source $MYVIMRC
+    " autocmd! BufWritePost .vimrc source $MYVIMRC
 
-  " remove trailing whitespace on save
-  autocmd BufWritePre *.sass,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
+    " remove trailing whitespace on save
+    autocmd BufWritePre *.sass,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
 
   augroup END
 
 else
-
   set autoindent    " always set autoindenting on
-
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
