@@ -1,6 +1,6 @@
 set nocompatible
 
-" My changes
+" I type in Dvorak, this is right next to return and quite convenient.
 let mapleader = '-'
 command Config e ~/.vimrc
 
@@ -29,17 +29,9 @@ set autoread
 set scrolloff=5
 
 
-" might want to make this maintain selection in visual mode
-map <D-/> :TComment<CR>
-" Ideally this would find the cursor position before and after, and adjust for
-" the movement, I'll assume that it's at least 2 charachters though for now.
-inoremap <D-/> <esc>:TComment<CR>2la
-
-" create new line above/below from insert mode
+" edit new line above/below from insert mode
 inoremap <D-CR> <esc>o
 inoremap <S-CR> <esc>O
-
-let g:sparkupNextMapping = '<c-j>'
 
 " directional window movements
 map <c-h> <c-w>h
@@ -66,6 +58,9 @@ nmap gV `[v`]
 
 " Search and replace word under cursor
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+" Ack project for word under cursor (Command-Option-Shift-f)
+nnoremap <D-Ï> :Ack <C-r><C-w><CR>
+
 
 " Allow holding command to move directionally on lines with soft line breaks
 vmap <D-j> gj
@@ -87,10 +82,23 @@ vmap <c-i> s}i#<esc>f}
 " wrap with html link
 vmap <c-l> sta href=""<CR>f"a
 
-" NERDTree
+" Reveal file in Finder (Command-Option-Shift-r)
+map <D-‰> :!open -R %<CR><CR>
+
+""""""""""" Plugin configuration
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
+
+" might want to make this maintain selection in visual mode
+map <D-/> :TComment<CR>
+" Ideally this would find the cursor position before and after, and adjust for
+" the movement, I'll assume that it's at least 2 charachters though for now.
+inoremap <D-/> <esc>:TComment<CR>2la
+
+" Sparkup is fantastic! https://github.com/rstacruz/sparkup
+let g:sparkupNextMapping = '<c-j>'
+""""""""""""""""""""""""""""""""
 
 " function! CleanHTML()
 "   return substitute('%', "’", "'", 'g')
@@ -168,7 +176,7 @@ set spelllang=en_us
 
 " required for ruby blocks as text-objects
 runtime macros/matchit.vim
-"""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
