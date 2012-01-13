@@ -1,26 +1,56 @@
 snippet c
 	color: $${1:sass_color};
+
 snippet m
-	margin: ${1:4}px ${2};
+	margin: ${1:4}px;
+snippet mt
+	margin-top: ${1:0}px;
+snippet mb
+	margin-bottom: ${1:0}px;
+snippet ml
+	margin-left: ${1:0}px;
+snippet mr
+	margin-right: ${1:0};
+
 snippet p
-	padding: ${1:4}px ${2};
+	padding: ${1:4}px;
+snippet pt
+	padding-top: ${1:0}px;
+snippet pb
+	padding-bottom: ${1:0}px;
+snippet pl
+	padding-left: ${1:0}px;
+snippet pr
+	padding-right: ${1:0}px;
+
 snippet	b
-	border: ${1:1}px ${2:solid} $${3:sass_color} ${4};
+	border: ${1:1}px ${2:solid} $${3:sass_color};
+snippet	bt
+	border-top: ${1:1}px ${2:solid} $${3:sass_color};
+snippet	bb
+	border-bottom: ${1:1}px ${2:solid} $${3:sass_color};
 snippet bgc
 	background-color: $${1:sass_color};
-#
+snippet bgi
+	background-image: image_url('${1}${2:.png}');
+snippet bgr
+	background-repeat: ${1:no-repeat};
+snippet bgp
+	background-position: ${1:center} ${2:top};
+
 snippet fs
-	font-size: ${1:12}px${2};
+	font-size: ${1:12}px;
 snippet fw
 	font-weight: ${1:bold};
+snippet ff
+	font-family: verdana, "Lucida Grande", "Lucida Sans Unicode", helvetica, arial, sans-serif;
 snippet ts
-	text-shadow: $${1:sass_color} ${2:1}px ${3:1}px ${4:1}px${5};
+	text-shadow: $${1:sass_color} ${2:1}px ${3:1}px ${4:1}px;
 snippet lh
-	line-height: ${1:16}px${2};
+	line-height: ${1:16}px;
 snippet td
 	text-decoration: ${1:none};
-#
-#
+
 snippet pos absolute
 	position: absolute;
 snippet pos relative
@@ -29,17 +59,26 @@ snippet pos fixed
 	position: fixed;
 snippet pos static (default)
 	position: static;
-#
+
+snippet f
+	float: ${1:left};
+snippet f+
+	+float('${1:left}');
+
 snippet t
-	top: ${1:0}px${2};
+	top: ${1:0}px;
 snippet bot
-	bottom: ${1:0}px${2};
+	bottom: ${1:0}px;
 snippet l
-	left: ${1:0}px${2};
+	left: ${1:0}px;
 snippet r
-	right: ${1:0}px${2};
-#
-#
+	right: ${1:0}px;
+
+snippet w
+	width: ${1:0}px;
+snippet h
+	height: ${1:0}px
+
 snippet d none
 	display: none;
 snippet d block
@@ -50,7 +89,21 @@ snippet d inline block
 	display: inline-block;
 snippet d compact
 	display: compact;
-#
-#
+
+snippet mah
+	max-height: ${1}px;
+snippet maw
+	max-width: ${1}px;
+
 snippet ta
 	text-align: ${1:center};
+
+snippet tt
+	text-transform: capitalize;
+snippet tt
+	text-transform: lowercase;
+snippet tt
+	text-transform: none;
+snippet tt
+	text-transform: uppercase;
+
