@@ -74,6 +74,11 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
+
+" Move an item forward in a list
+" nmap <Leader>a df,"_xf,i <esc>p
+
+
 " wrap selected text in ruby interpolation and move to end of it
 vmap <c-i> s}i#<esc>f}
 " insert ruby interpolation
@@ -247,7 +252,7 @@ if has("autocmd")
     " autocmd! BufWritePost .vimrc source $MYVIMRC
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.sass,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
 
   augroup END
 

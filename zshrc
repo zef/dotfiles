@@ -15,6 +15,7 @@ code=~/code
 # export ZSH_THEME="random"
 
 # export ZSH_THEME="josh"
+# export ZSH_THEME="zhann"
 export ZSH_THEME="edvardm"
 
 # Set to this to use case-sensitive completion
