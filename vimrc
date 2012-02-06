@@ -28,7 +28,6 @@ set linebreak
 set autoread
 set scrolloff=5
 
-
 " edit new line above/below from insert mode
 inoremap <D-CR> <esc>o
 inoremap <S-CR> <esc>O
@@ -61,7 +60,6 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Ack project for word under cursor (Command-Option-Shift-f)
 nnoremap <D-Ï> :Ack <C-r><C-w><CR>
 
-
 " Allow holding command to move directionally on lines with soft line breaks
 vmap <D-j> gj
 vmap <D-k> gk
@@ -74,10 +72,17 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
-
 " Move an item forward in a list
 " nmap <Leader>a df,"_xf,i <esc>p
 
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+" Don't move on *
+nnoremap * *<c-o>
+
+" Sudo to write when you opened the file without sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
 " wrap selected text in ruby interpolation and move to end of it
 vmap <c-i> s}i#<esc>f}
@@ -89,6 +94,37 @@ vmap <c-l> sta href=""<CR>f"a
 
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R %<CR><CR>
+
+" The following seems interesting... I'd like to play with it at some point
+" found around line 1230 here: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
+
+" " Motion for "next/last object". For example, "din(" would go to the next "()"
+" " pair and delete its contents.
+"
+" onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+" xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
+" onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+" xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+"
+" onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
+" xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
+" onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
+" xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
+"
+" function! s:NextTextObject(motion, dir)
+"   let c = nr2char(getchar())
+"
+"   if c ==# "b"
+"       let c = "("
+"   elseif c ==# "B"
+"       let c = "{"
+"   elseif c ==# "d"
+"       let c = "["
+"   endif
+"
+"   exe "normal! ".a:dir.c."v".a:motion.c
+" endfunction
+
 
 """"""""""" Plugin configuration
 map <Leader>n :NERDTreeToggle<CR>
