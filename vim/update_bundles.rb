@@ -2,36 +2,41 @@
 
 # originally here: http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
-git_bundles = [ 
-  "git://github.com/astashov/vim-ruby-debugger.git",
-  "git://github.com/msanders/snipmate.vim.git",
-  "git://github.com/scrooloose/nerdtree.git",
-  "git://github.com/timcharper/textile.vim.git",
-  "git://github.com/tpope/vim-cucumber.git",
+git_bundles = [
+  # "git://github.com/astashov/vim-ruby-debugger.git",
+  # "git://git.wincent.com/command-t.git",
+  # "git://github.com/tpope/vim-speeddating.git",
+  # "git://github.com/mjbrownie/swapit.git",
+  #
+  # General
+  "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/tpope/vim-git.git",
-  "git://github.com/tpope/vim-haml.git",
-  "git://github.com/tpope/vim-markdown.git",
-  "git://github.com/tpope/vim-rails.git",
-  "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-surround.git",
   "git://github.com/tpope/vim-ragtag.git",
-  "git://github.com/tpope/vim-speeddating.git",
+  "git://github.com/tpope/vim-unimpaired.git",
   "git://github.com/tpope/vim-vividchalk.git",
+  "git://github.com/msanders/snipmate.vim.git",
+  "git://github.com/mileszs/ack.vim.git",
   "git://github.com/tsaleh/vim-align.git",
   "git://github.com/tsaleh/vim-shoulda.git",
   "git://github.com/tsaleh/vim-supertab.git",
-  "git://github.com/tsaleh/vim-tcomment.git",
-  "git://github.com/vim-ruby/vim-ruby.git",
+  "git://github.com/tomtom/tcomment_vim.git",
+  "git://github.com/scrooloose/nerdtree.git",
+  # Language/syntax specific
+  "git://github.com/davidoc/taskpaper.vim.git",
+  "git://github.com/tpope/vim-markdown.git",
+  "git://github.com/timcharper/textile.vim.git",
   "git://github.com/kchmck/vim-coffee-script.git",
+  "git://github.com/juvenn/mustache.vim.git",
+  # Ruby and related
+  "git://github.com/vim-ruby/vim-ruby.git",
+  "git://github.com/tpope/vim-rails.git",
   "git://github.com/tpope/vim-endwise.git",
-  "git://git.wincent.com/command-t.git",
-  "git://github.com/tpope/vim-unimpaired.git",
+  "git://github.com/tpope/vim-haml.git",
+  "git://github.com/tpope/vim-cucumber.git",
   "git://github.com/kana/vim-textobj-user.git",
-  "git://github.com/nelstrom/vim-textobj-rubyblock.git",
-  "git://github.com/mileszs/ack.vim.git",
-  "git://github.com/mjbrownie/swapit.git",
-  "git://github.com/juvenn/mustache.vim.git"
+  "git://github.com/nelstrom/vim-textobj-rubyblock.git"
 ]
 
 # also remember sparkup
