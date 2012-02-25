@@ -1,10 +1,15 @@
 " repeat.vim - Let the repeat command repeat plugin maps
 " Maintainer:   Tim Pope
 " Version:      1.0
+" GetLatestVimScripts: 2136 1 :AutoInstall: repeat.vim
 
 " Installation:
 " Place in either ~/.vim/plugin/repeat.vim (to load at start up) or
 " ~/.vim/autoload/repeat.vim (to load automatically as needed).
+"
+" License:
+" Copyright (c) Tim Pope.  Distributed under the same terms as Vim itself.
+" See :help license
 "
 " Developers:
 " Basic usage is as follows:
@@ -33,7 +38,7 @@ let g:loaded_repeat = 1
 let g:repeat_tick = -1
 
 function! repeat#set(sequence,...)
-    silent exe "norm! \"=''\<CR>p"
+    call setline(line('.'), getline('.'))
     let g:repeat_sequence = a:sequence
     let g:repeat_count = a:0 ? a:1 : v:count
     let g:repeat_tick = b:changedtick
