@@ -103,7 +103,7 @@ command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 vmap <c-l> sta href=""<CR>f"a
 
 " Reveal file in Finder (Command-Option-Shift-r)
-map <D-‰> :!open -R %<CR><CR>
+map <D-‰> :!open -R '%'<CR><CR>
 
 
 " The following seems interesting... I'd like to play with it at some point
