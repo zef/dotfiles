@@ -38,7 +38,7 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-" Move lines up and down single lines
+" Move lines up and down single lines with help from Unimpaired
 nmap <D-Up> [e
 nmap <D-Down> ]e
 vmap <D-Up> [egv
@@ -72,6 +72,14 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
+" Change inside quotes with Cmd-" and Cmd-'
+nnoremap <D-'> ci'
+nnoremap <D-"> ci"
+inoremap <D-'> <esc>ci'
+inoremap <D-"> <esc>ci"
+
+" TODO - I'd like to find a plugin that deals with moving args around... could
+" be quite tricky actually.
 " Move an item forward in a list
 " nmap <Leader>a df,"_xf,i <esc>p
 
@@ -84,16 +92,19 @@ nnoremap * *<c-o>
 " Sudo to write when you opened the file without sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
-" wrap selected text in ruby interpolation and move to end of it
-vmap <c-i> s}i#<esc>f}
-" insert ruby interpolation
-" imap <c-i> #{}<esc>i
+" add surround mapping of 'i' to ruby/coffeescript style string interpolation
+let g:surround_105  = "#{\r}" " 105 is the ASCII mapping for i
+
+" Convert range or entire buffer to Ruby 1.9 hash syntax
+" https://github.com/hashrocket/dotmatrix/commit/6c77175adc19e94594e8f2d6ec29371f5539ceeb
+command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 " wrap with html link
 vmap <c-l> sta href=""<CR>f"a
 
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R %<CR><CR>
+
 
 " The following seems interesting... I'd like to play with it at some point
 " found around line 1230 here: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
