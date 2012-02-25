@@ -32,7 +32,7 @@ set scrolloff=5
 inoremap <D-CR> <esc>o
 inoremap <S-CR> <esc>O
 
-" directional window movements
+" directional window movements in one action
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -138,6 +138,12 @@ map <D-‰> :!open -R '%'<CR><CR>
 
 
 """"""""""" Plugin configuration
+map <Leader>y :YRShow<CR>
+let g:yankring_ignore_duplicate = 0
+let g:yankring_window_use_horiz = 0  " Use vertical split
+let g:yankring_window_use_right = 0
+let g:yankring_window_width     = 40 " then press space to toggle expanded window
+
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
