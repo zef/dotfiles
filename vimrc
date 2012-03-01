@@ -46,6 +46,11 @@ vmap <D-Down> ]egv
 imap <D-Up> <esc>[ea
 imap <D-Down> <esc>]ea
 
+" duplicate line or selection
+nmap <D-D> yyp
+imap <D-D> <esc>yypgi<esc>ja
+vmap <D-D> yPgv<esc>
+
 " TextMate-like indent/outdent
 nmap <D-[> <<
 nmap <D-]> >>
