@@ -1,0 +1,404 @@
+*smartpunc.txt*	Smart input assistant for punctuations
+
+Version 0.0.0
+Script ID: ****
+Copyright (C) 2012 Kana Natsuno <http://whileimautomaton.net/>
+License: So-called MIT/X license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+CONTENTS					*smartpunc-contents*
+
+Introduction            |smartpunc-introduction|
+Interface               |smartpunc-interface|
+  Functions               |smartpunc-functions|
+  Key Mappings            |smartpunc-key-mappings|
+Rules                   |smartpunc-rules|
+Customization           |smartpunc-customization|
+Bugs                    |smartpunc-bugs|
+Changelog               |smartpunc-changelog|
+
+
+
+
+==============================================================================
+INTRODUCTION					*smartpunc-introduction*
+
+*smartpunc* is a Vim plugin to provide a smart input assistant for
+punctuations.  Whenever you write a text, especially source code, you have to
+input and deal with a pair of punctuations such as (), [], {}, and so on.
+This plugin provides various input assistants according to the current context
+and 'filetype' as follows (note that "#" indicates the cursor position in the
+following examples):
+
+Complete the corresponding character automatically:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   #      | (     | (#)
+   #      | {     | {#}
+   #      | "     | "#"
+
+Leave from the current block easily:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   (#)    | )     | ()#
+   [#]    | ]     | []#
+   "foo#  | "     | "foo"#
+
+Undo the completion easily:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   (#)    | <BS>  | #
+
+Care to input strings and regular expressions:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   \#     | "     | \"#
+   \#     | <     | \<#
+
+Care to input English words:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   let#   | 's    | let's#
+   foo(#  | '     | foo('#'
+
+Care to write Lisp/Scheme source code:
+
+   Before | Input | After   ~
+   -------+-------+-------- ~
+   #      | 'foo  | 'foo#
+   "#"    | 'hi   | "'hi#'"
+
+Care to write C-like syntax source code:
+
+   Before       | Input   | After        ~
+   -------------+---------+------------- ~
+   if (...) {#} | <Enter> | if (...) {
+                |         |     #
+		|         | }
+   if (...)     | <Enter> | if (...)
+   {#}          |         | {
+		|         |     #
+		|         | }
+
+
+Requirements:
+- Vim 7.3 or later
+
+Latest version:
+https://github.com/kana/vim-smartpunc
+
+Document in HTML format:
+http://vim-doc.heroku.com/view?https://github.com/kana/vim-smartpunc/blob/master/doc/smartpunc.txt
+
+
+
+
+==============================================================================
+INTERFACE					*smartpunc-interface*
+
+------------------------------------------------------------------------------
+FUNCTIONS					*smartpunc-functions*
+
+smartpunc#clear_rules()				*smartpunc#clear_rules()*
+			Clear all defined rules.
+
+smartpunc#define_default_rules()	    *smartpunc#define_default_rules()*
+			Define |smartpunc-default-rules|.
+
+smartpunc#define_rule({rule})			*smartpunc#define_rule()*
+			Define a rule for the smart input assistant.
+			See |smartpunc-rules| for the details of {rule}.
+
+						*smartpunc#map_to_trigger()*
+smartpunc#map_to_trigger({mode}, {lhs}, {rhs-char}, {rhs-fallback})
+			Map {lhs} to trigger the smart input assistant for
+			{rhs-char} in {mode}.  If there is no proper rule
+			for the current context, {rhs-fallback} will be
+			inserted instead of {lhs}.
+
+			{lhs}, {rhs-char} and {rhs-fallback} are strings to
+			denote key sequences.
+
+			{lhs} is mapped in Insert mode if {mode} is 'i'.
+			{lhs} is mapped in Command-line mode if {mode} is 'c'.
+
+			See also |smartpunc-exampels| for the details.
+
+smartpunc#map_trigger_keys([{overridep}])	*smartpunc#map_trigger_keys()*
+			Map keys to trigger smart input assistant according to
+			rules which are currently defined.
+			Existing key mappings are overridden if {overridep} is
+			true, otherwise existing key mappings are kept.
+			If {overridep} is omitted, it is treated as a false
+			value.
+
+
+------------------------------------------------------------------------------
+KEY MAPPINGS					*smartpunc-key-mappings*
+
+Several characters in Insert mode and Command-line mode are mapped by default
+with |smartpunc#map_to_trigger()| to trigger the smart input assistant.
+See |smartpunc-default-rules| for the details.
+
+Set any value to *g:smartpunc_no_default_key_mappings*
+if you don't want to define the default key mappings.
+
+Each default key mapping will not be defined if the {lhs} is already mapped to
+something.  For example, the default key mapping on "(" will not be defined if
+you map "(" to something in your vimrc.
+
+
+
+
+==============================================================================
+RULES						*smartpunc-rules*
+
+------------------------------------------------------------------------------
+RULE DEFINITION					*smartpunc-rule-definition*
+
+Smart input assistants are defined by "rules".  Each "rule" is represented as
+a |Dictionary| which contains the following items:
+
+"at" (string) (required)
+	Specifies the context to use the smart input assistant.
+	This value is treated as a |regular-expression|.
+	The smart input assistant will be used if the regular exprssion
+	matches to the cursor position.
+
+	Tips: You can use |/\%#| to indicate the cursor position.
+	For example, '(\%#)' means that the smart input assistant will be used
+	if the cursor is located between parentheses.
+
+	Though |/\%#| works only for matching with the current buffer,
+	you can still use it for "at" to specify the cursor position in
+	Command-line mode.
+
+"char" (string) (required)
+	Specifies a character to trigger the smart input assistant.
+
+"input" (string) (required)
+	Specifies a result of the smart input assistant.
+	This value is used like {rhs} for |:map| commands.
+	This value is inputted instead of the "char" value.
+
+"mode" (string) (optional)
+	Specifies the context to use the smart input assistant.
+	This value is a string of characters to represent modes in which the
+	smart input assistant will be used.  Valid characters and
+	corresponding modes are as follows:
+
+	Character	Mode			~
+	---------	-----------------	~
+	i		Insert mode
+	:		Command-line mode for normal Ex commands
+	>		Command-line mode for |debug-mode| commands
+	/		Command-line mode for serching with |/|
+	?		Command-line mode for serching with |?|
+	@		Command-line mode for |input()|
+	-		Command-line mode for |:insert| or |:append|
+
+	The default value is 'i'.
+
+"filetype" (list of strings) (optional)
+	Specifies the context to use the smart input assistant.
+	This value is a list of 'filetype' names like "lisp", "scheme" etc.
+	The smart input assistant will be used if:
+	
+	- This item is not given, or
+	- The current buffer's 'filetype' equals one of this value.
+
+	If 'filetype' is a compound one which has two or more names
+	concatenated by ".", each name will be tested instead of the whole
+	value of 'filetype'.
+
+	This specification works only for Insert mode.
+
+"syntax" (list of strings) (optional)
+	Specifies the context to use the smart input assistant.
+	This value is a list of syntax names like "Comment", "Constant" etc.
+	The smart input assistant will be used if:
+	
+	- This item is not given, or
+	- The cursor position is highlighted as one of this value.
+
+	See also |group-name| for examples of available values.
+	Note that only "wide" syntax items are effective.  In other words,
+	syntax items which is linked to another is not effective, and they
+	will never be matched.  For example:
+
+	* "Constant" is effective because it is not linked to anything.
+	* "String" is not effective because it is linked to "Constant".
+	* "lispString" is not effective because it is linked to "String".
+
+	This specification works only for Insert mode.
+
+
+------------------------------------------------------------------------------
+DEFAULT RULES					*smartpunc-default-rules*
+
+For convenience, there are many rules defined by default.
+
+If you read this document in Vim,
+see ../autoload/smartpunc.vim for the details (type |gf| at the file name).
+
+If you read this document with a Web browser, see the following instead:
+https://github.com/kana/vim-smartpunc/blob/master/autoload/smartpunc.vim
+
+
+------------------------------------------------------------------------------
+PRIORITIES					*smartpunc-rule-priorities*
+
+Rules have priorities.  It is used to select the best rule for the smart input
+assistant.
+
+Rule priorities are calculated as follows:
+
+(a) "at" length.
+(b) 100 / {the number of elements} if "filetype" is given.
+    0 if "filetype" is not given.
+(c) 100 / {the number of elements} if "syntax" is given.
+    0 if "syntax" is not given.
+(d) 100 / {the length of "mode"}.
+
+Rule priority = (a) + (b) + (c) + (d)
+
+For example:
+
+	{'at': '\%#', 'char': "'", 'input': "''\<Left>"} ~
+		(a) 3
+		(b) 0
+		(c) 0
+		(d) 100 / 1 = 100
+		Priority = 3 + 0 + 0 + 100 = 103
+
+	{'at': '\%#', 'char': "'", 'input': "'", ~
+	 'filetype': ['lisp', 'scheme']} ~
+		(a) 3
+		(b) 100 / 2 = 50
+		(c) 0
+		(d) 100 / 1 = 100
+		Priority = 3 + 50 + 0 + 100 = 153
+
+	{'at': '\%#', 'char': "'", 'input': "'", ~
+	 'filetype': ['lisp', 'scheme'], ~
+	 'syntax': ['Comment', 'Constant']} ~
+		(a) 3
+		(b) 100 / 2 = 50
+		(c) 100 / 2 = 50
+		(d) 100 / 1 = 100
+		Priority = 3 + 50 + 50 + 100 = 203
+
+
+------------------------------------------------------------------------------
+RULE SELECTION ALGORITHM		  *smartpunc-rule-selection-algorithm*
+
+Whenever you type a key in Insert mode or Command-line mode, smartpunc selects
+the best rule for the current context with the following steps:
+
+(1) Select available rules which satisfy all the following conditions:
+
+    (c) "char" value is equal to the typed key.
+    (a) The text under the cursor is matched to "at" pattern.
+    (f) The 'filetype' of the current buffer is contained in "filetype" list,
+        or "filetype" list is omitted,
+	or the current mode is not Insert mode.
+    (s) The character at the cursor is highlighted as one of "syntax" names,
+        or "syntax" names are omitted,
+	or the current mode is not Insert mode.
+    (m) The current mode matches to "mode" value.
+
+(2) If two or more rules are selected at the step (1),
+    select the rule with the highest |smartpunc-rule-priority|.
+
+(3) If two or more rules are selected at the step (2),
+    select the rule with the greatest "at".
+    Note that this step is just to avoid unstable selection.
+
+
+------------------------------------------------------------------------------
+RULE CONVENTIONS				*smartpunc-rule-conventions*
+
+Like |i_<BS>| and |i_CTRL-H|, there are several keys which does the same
+effects.  If you want to define rules for such keys,
+
+* Use the most descriptive keys for "char"s of rules.
+* Map other keys to trigger rules for the descriptive keys.
+
+For example, if you want to define rules on both |i_<BS>| and |i_CTRL-H|,
+
+* Define rules only for <BS>.
+* Map <C-h> to trigger rules for <BS>, with the following command:
+>
+	smartpunc#map_to_trigger('<C-h>', '<BS>', '<C-h>')
+<
+This convention is to avoid rule duplication.  See also the following table:
+
+"char" keys | Mapped keys                    ~
+------------+------------------------------- ~
+<BS>        | <C-h>
+<Enter>     | <C-m> <C-j> <CR> <NL> <Return>
+<Esc>       | <C-[>
+<Tab>       | <C-i>
+
+
+
+
+==============================================================================
+CUSTOMIZATION					*smartpunc-customization*
+
+(A) To define your own |smartpunk-rules| for the smart input assistant,
+    use |smartpunc#define_rule()|.  See also |smartpunc-default-rules| for the
+    real world examples.
+
+(B) If you define your own |smartpunc-rules| which "char" values are different
+    from ones of |smartpunc-default-rules|, you have to define trigger keys
+    for your own rules with |smartpunc#map_to_trigger()|.
+
+
+
+
+==============================================================================
+BUGS						*smartpunc-bugs*
+
+- Currently there is no known issue.
+
+- If you find any problem or have any suggestion, please give your feedback to
+  the author by: https://github.com/kana/vim-smartpunc/issues
+
+
+
+
+==============================================================================
+CHANGELOG					*smartpunc-changelog*
+
+0.0.0	2012-02-09T22:35:02+09:00		*smartpunc-changelog-0.0.0*
+	- Initial version.
+
+
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:fen:fdl=0:fdm=marker:

@@ -24,6 +24,7 @@ git_bundles = [
   "git://github.com/tomtom/tcomment_vim.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/vim-scripts/YankRing.vim.git",
+  "git://github.com/kana/vim-smartpunc.git",
   # Language/syntax specific
   "git://github.com/davidoc/taskpaper.vim.git",
   "git://github.com/tpope/vim-markdown.git",
@@ -54,8 +55,6 @@ vim_org_scripts = [
   ["jquery",        "12276", "syntax"],
   # http://www.vim.org/scripts/script.php?script_id=1945
   ["json",          "10853", "syntax"],
-  # http://www.vim.org/scripts/script.php?script_id=1849
-  ["AutoClose",     "10873", "plugin"],
 	# hexHighlight: http://www.vim.org/scripts/script.php?script_id=2937
   ["hexHighlight",  "12150", "plugin"]
 ]
