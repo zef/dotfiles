@@ -94,9 +94,6 @@ nnoremap * *<c-o>
 " Sudo to write when you opened the file without sudo
 cnoremap w!! w !sudo tee % >/dev/null
 
-" add surround mapping of 'i' to ruby/coffeescript style string interpolation
-let g:surround_105  = "#{\r}" " 105 is the ASCII mapping for i
-
 " Convert range or entire buffer to Ruby 1.9 hash syntax
 " https://github.com/hashrocket/dotmatrix/commit/6c77175adc19e94594e8f2d6ec29371f5539ceeb
 command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
@@ -145,6 +142,15 @@ let g:yankring_ignore_duplicate = 0
 let g:yankring_window_use_horiz = 0  " Use vertical split
 let g:yankring_window_use_right = 0
 let g:yankring_window_width     = 40 " then press space to toggle expanded window
+
+" I use surround way more than substitute...
+nmap s <Plug>Ysurround
+nmap S <Plug>YSurround
+nmap ss <Plug>Yssurround
+nmap SS <Plug>YSsurround
+
+" add mapping of 'i' to ruby/coffeescript style string interpolation
+let g:surround_105  = "#{\r}" " 105 is the ASCII mapping for i
 
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
