@@ -51,6 +51,8 @@ nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
+imap <D-[> <esc><<gi<esc>hi
+imap <D-]> <esc>>>gi<esc>lla
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
@@ -167,6 +169,9 @@ let g:sparkupNextMapping = '<c-j>'
 " See /Applications/MacVim.app/Contents/Resources/vim/gvimrc
 " makes shift selection possible in insert mode
 if has("gui_macvim")
+	nmap <SwipeLeft> gT
+	nmap <SwipeRight> gt
+
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
@@ -305,7 +310,7 @@ if has("autocmd")
     " autocmd! BufWritePost .vimrc source $MYVIMRC
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.h,*.m :call <SID>StripTrailingWhitespaces()
 
   augroup END
 
