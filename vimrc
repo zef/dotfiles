@@ -138,10 +138,12 @@ map <D-‰> :!open -R '%'<CR><CR>
 
 """"""""""" Plugin configuration
 map <Leader>y :YRShow<CR>
+let g:yankring_history_file = '.yankring_history'
 let g:yankring_ignore_duplicate = 0
 let g:yankring_window_use_horiz = 0  " Use vertical split
 let g:yankring_window_use_right = 0
 let g:yankring_window_width     = 40 " then press space to toggle expanded window
+let g:yankring_zap_keys         = '' " I don't want yankring slowing me down by asking questions...
 
 " I use surround way more than substitute...
 nmap s <Plug>Ysurround
@@ -316,7 +318,7 @@ if has("autocmd")
     " autocmd! BufWritePost .vimrc source $MYVIMRC
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.h,*.m :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.h,*.m,*.vim :call <SID>StripTrailingWhitespaces()
 
   augroup END
 
