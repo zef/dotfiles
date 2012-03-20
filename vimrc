@@ -85,8 +85,8 @@ nnoremap <D-"> ci"
 inoremap <D-'> <esc>ci'
 inoremap <D-"> <esc>ci"
 
-" TODO - I'd like to find a plugin that deals with moving args around... could
-" be quite tricky actually.
+" TODO - I'd like to find or write a plugin that deals with moving args
+" around... could actually be quite tricky to implement.
 " Move an item forward in a list
 " nmap <Leader>a df,"_xf,i <esc>p
 
@@ -173,12 +173,6 @@ inoremap <D-/> <esc>:TComment<CR>2la
 let g:sparkupNextMapping = '<c-j>'
 """"""""""""""""""""""""""""""""
 
-" function! CleanHTML()
-"   return substitute('%', "’", "'", 'g')
-"   “
-"   ”
-" endfunction
-
 " See /Applications/MacVim.app/Contents/Resources/vim/gvimrc
 " makes shift selection possible in insert mode
 if has("gui_macvim")
@@ -188,7 +182,7 @@ if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
-  " include rL for scrollbars, trying it out without for now...
+  " include rL for scrollbars
   set guioptions=aAegmt
 
   let macvim_hig_shift_movement = 1
@@ -266,9 +260,6 @@ set history=50    " keep 50 lines of command line history
 set ruler   " show the cursor position all the time
 set incsearch   " do incremental searching
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -330,12 +321,4 @@ if has("autocmd")
 else
   set autoindent    " always set autoindenting on
 endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-      \ | wincmd p | diffthis
-endif
 
