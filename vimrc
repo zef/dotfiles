@@ -85,11 +85,6 @@ nnoremap <D-"> ci"
 inoremap <D-'> <esc>ci'
 inoremap <D-"> <esc>ci"
 
-" TODO - I'd like to find or write a plugin that deals with moving args
-" around... could actually be quite tricky to implement.
-" Move an item forward in a list
-" nmap <Leader>a df,"_xf,i <esc>p
-
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
@@ -109,46 +104,7 @@ vmap <c-l> sta href=""<CR>f"a
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R '%'<CR><CR>
 
-
-" The following seems interesting... I'd like to play with it at some point
-" found around line 1230 here: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
-
-" " Motion for "next/last object". For example, "din(" would go to the next "()"
-" " pair and delete its contents.
-"
-" onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-" xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-" onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-" xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-"
-" onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-" xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-" onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-" xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-"
-" function! s:NextTextObject(motion, dir)
-"   let c = nr2char(getchar())
-"
-"   if c ==# "b"
-"       let c = "("
-"   elseif c ==# "B"
-"       let c = "{"
-"   elseif c ==# "d"
-"       let c = "["
-"   endif
-"
-"   exe "normal! ".a:dir.c."v".a:motion.c
-" endfunction
-
-
 """"""""""" Plugin configuration
-map <Leader>y :YRShow<CR>
-let g:yankring_history_file = '.yankring_history'
-let g:yankring_ignore_duplicate = 0
-let g:yankring_window_use_horiz = 0  " Use vertical split
-let g:yankring_window_use_right = 0
-let g:yankring_window_width     = 40 " then press space to toggle expanded window
-let g:yankring_zap_keys         = '' " I don't want yankring slowing me down by asking questions...
 
 " I use surround way more than substitute...
 nmap s <Plug>Ysurround

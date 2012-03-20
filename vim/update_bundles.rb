@@ -23,7 +23,6 @@ git_bundles = [
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tomtom/tcomment_vim.git",
   "git://github.com/scrooloose/nerdtree.git",
-  "git://github.com/vim-scripts/YankRing.vim.git",
   "git://github.com/kana/vim-smartpunc.git",
   # Language/syntax specific
   "git://github.com/davidoc/taskpaper.vim.git",
