@@ -1,16 +1,16 @@
 Vim
 ---
 
-- I'd like to find or write a plugin that deals with moving args around... could
-  actually be quite tricky to implement.
+I'd like to find or write a plugin that deals with moving args around... 
+could actually be quite tricky to implement.
 
 ```vim
 " Move an item forward in a list
 nmap <Leader>a df,"_xf,i <esc>p
 ```
 
-- The following seems interesting... I'd like to play with it at some point
-  found around line 1230 here: https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
+The following seems interesting... I'd like to play with it at some point.
+Found around line 1230 [here](https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc).
 
 ```vim
 " Motion for "next/last object". For example, "din(" would go to the next "()"
