@@ -6,4 +6,5 @@
 --type-add=html=.haml,.liquid
 --type-add=css=.sass
 --type-add=js=.coffee
+--type-add=features=.feature
 
