@@ -24,6 +24,7 @@ git_bundles = [
   "git://github.com/tomtom/tcomment_vim.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/kana/vim-smartpunc.git",
+  "git://github.com/altercation/vim-colors-solarized.git",
   # Language/syntax specific
   "git://github.com/davidoc/taskpaper.vim.git",
   "git://github.com/tpope/vim-markdown.git",
