@@ -270,7 +270,7 @@ if has("autocmd")
     " autocmd! BufWritePost .vimrc source $MYVIMRC
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.h,*.m,*.vim :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.haml,*.h,*.m,*.vim :call <SID>StripTrailingWhitespaces()
 
   augroup END
 
