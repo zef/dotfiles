@@ -257,6 +257,8 @@ if has("autocmd")
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
 
+    " autocmd FileType html setlocal equalprg=tidy\ -q\ -i\ --show-body-only\ yes
+
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
@@ -270,7 +272,7 @@ if has("autocmd")
     " autocmd! BufWritePost .vimrc source $MYVIMRC
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.haml,*.h,*.m,*.vim :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.sass,*.scss,*.css,*.erb,*.rb,*.js,*.coffee,*.feature,*.haml,*.h,*.m,*.vim :call <SID>StripTrailingWhitespaces()
 
   augroup END
 

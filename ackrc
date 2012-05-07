@@ -3,9 +3,8 @@
 # follow symlinks
 --follow
 
---type-add=html=.haml,.liquid
---type-add=css=.sass
---type-add=css=.scss
+--type-add=html=.haml,.liquid,.eco
+--type-add=css=.sass,.scss
 --type-add=js=.coffee
 --type-add=features=.feature
 
