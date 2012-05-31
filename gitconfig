@@ -23,6 +23,7 @@
 [alias]
   c = commit -am
   br = branch
+  pr = pull --rebase
   co = checkout
   st = status
   master = checkout master
