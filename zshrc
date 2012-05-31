@@ -35,6 +35,7 @@ export ZSH_THEME="edvardm"
 plugins=(git rvm gem rails3 osx bundler pow)
 
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 source ~/.zsh/aliases
 [[ -f ~/.zsh/local ]] && source ~/.zsh/local
