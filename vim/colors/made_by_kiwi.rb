@@ -1,3 +1,4 @@
+# https://github.com/joshuaclayton/palette
 bg         = '161616'
 light_bg   = '202020'
 white      = 'ffffff'
@@ -15,7 +16,6 @@ highlight  = '1a3d5a'
 
 vim_colors "kiwi" do
   author "Zef Houssney"
-  # notes  "My really sweet theme"
 
   reset      true
   background :dark
@@ -23,31 +23,31 @@ vim_colors "kiwi" do
   Normal     light_grey, bg
   Todo       light_grey, bg
 
-  
+
   Visual nil, highlight
   # link :FoldColumn, :Todo, :to => :Normal
-  
-  
+
+
   Comment dark_grey, :gui => 'NONE'
   MatchParen red, bg
 
   String green
- 
+
   Title white, :gui => 'bold'
 
   Function white
   StorageClass light_grey
 
-  Constant red 
+  Constant red
   PreProc  red
 
-  # Special white 
+  # Special white
   Special dark_green
-  
+
   Type blue, :gui => 'NONE'
-  
+
   Number red
-  
+
   Conditional orange
   Define      orange
   Identifier  orange
@@ -57,8 +57,10 @@ vim_colors "kiwi" do
   Include     orange
 
   # Vim UI
-	Cursor     nil, green
-	CursorLine nil, highlight
+	Cursor       nil, green
+	CursorLine   nil, light_bg
+	CursorColumn nil, light_bg
+
   LineNr     dark_grey
   NonText    dark_grey
 	Folded 		 dark_grey, black
@@ -75,7 +77,7 @@ vim_colors "kiwi" do
   PmenuThumb red, red
 
   # Vim scripts
-  
+
 
   # help
   helpOption blue, :gui => 'NONE'
@@ -92,24 +94,24 @@ vim_colors "kiwi" do
   rubyRailsRenderMethod red
 
   rubyRailsUserClass   blue
-  rubyInstanceVariable blue 
-  rubyClassVariable    blue 
-  
+  rubyInstanceVariable blue
+  rubyClassVariable    blue
+
   rubyMethodDeclaration white
   rubyFunction white
 
   rubyStringDelimiter green
   rubyInterpolationDelimiter dark_grey
-  
+
   rubySymbol purple
 
   # HTML
   htmlTitle light_grey
-  htmlTag            dark_green 
-  htmlArg            dark_green 
-  htmlTagName        dark_green 
-  htmlEndTag         dark_green 
-  htmlSpecialTagName dark_green 
+  htmlTag            dark_green
+  htmlArg            dark_green
+  htmlTagName        dark_green
+  htmlEndTag         dark_green
+  htmlSpecialTagName dark_green
   htmlSpecialChar    red
   htmlLink           blue, :gui => 'NONE'
 
@@ -117,7 +119,7 @@ vim_colors "kiwi" do
   cssIdentifier dark_green
   cssClassName  dark_green
   cssTagName orange, :gui => 'NONE'
-  
+
   cssPseudoClass   blue
   cssPseudoClassId blue
   # cssDefinition white

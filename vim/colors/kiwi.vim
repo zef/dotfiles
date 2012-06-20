@@ -11,100 +11,102 @@ if version > 580
     endif
 endif
 
+let colors_name="kiwi"
+
 if has("gui_running")
     set background=dark
 endif
 
-let colors_name="kiwi"
+hi Normal                     guifg=#A6A6A6 ctermfg=248  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
+hi Todo                       guifg=#A6A6A6 ctermfg=248  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
+hi Visual                     guibg=#1A3D5A ctermbg=23   gui=NONE cterm=NONE
+hi Comment                    guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi MatchParen                 guifg=#DF3D2A ctermfg=166  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
+hi String                     guifg=#69CF22 ctermfg=76   gui=NONE cterm=NONE
+hi Title                      guifg=#FFFFFF ctermfg=231  gui=BOLD cterm=BOLD
+hi Function                   guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi StorageClass               guifg=#A6A6A6 ctermfg=248  gui=NONE cterm=NONE
+hi Constant                   guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi PreProc                    guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi Special                    guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi Type                       guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi Number                     guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi Conditional                guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Define                     guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Identifier                 guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Keyword                    guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Operator                   guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Statement                  guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Include                    guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi Cursor                     guibg=#69CF22 ctermbg=76   gui=NONE cterm=NONE
+hi CursorLine                 guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi CursorColumn               guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi LineNr                     guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi NonText                    guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi Folded                     guifg=#5E5E5E ctermfg=59   guibg=#000000 ctermbg=16   gui=NONE cterm=NONE
+hi FoldColumn                 guifg=#5E5E5E ctermfg=59   guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
+hi VertSplit                  guifg=#161616 ctermfg=233  guibg=#5E5E5E ctermbg=59   gui=NONE cterm=NONE
+hi StatusLine                 guifg=#FFFFFF ctermfg=231  guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi StatusLineNC               guifg=#202020 ctermfg=234  guibg=#A6A6A6 ctermbg=248  gui=NONE cterm=NONE
+hi WildMenu                   guifg=#43A7EB ctermfg=74   guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi Pmenu                      guifg=#43A7EB ctermfg=74   guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi PmenuSel                   guifg=#DF3D2A ctermfg=166  guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
+hi PmenuSbar                  guifg=#FFFFFF ctermfg=231  guibg=#FFFFFF ctermbg=231  gui=NONE cterm=NONE
+hi PmenuThumb                 guifg=#DF3D2A ctermfg=166  guibg=#DF3D2A ctermbg=166  gui=NONE cterm=NONE
+hi helpOption                 guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi helpNote                   guifg=#5E5E5E ctermfg=59   gui=ITALIC cterm=NONE
+hi helpSectionDelim           guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi rubyClass                  guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi rubyBlock                  guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi rubyControl                guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi rubyRailsMethod            guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi rubyRailsRenderMethod      guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi rubyRailsUserClass         guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi rubyInstanceVariable       guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi rubyClassVariable          guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi rubyMethodDeclaration      guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi rubyFunction               guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi rubyStringDelimiter        guifg=#69CF22 ctermfg=76   gui=NONE cterm=NONE
+hi rubyInterpolationDelimiter guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi rubySymbol                 guifg=#8C61CE ctermfg=98   gui=NONE cterm=NONE
+hi htmlTitle                  guifg=#A6A6A6 ctermfg=248  gui=NONE cterm=NONE
+hi htmlTag                    guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi htmlArg                    guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi htmlTagName                guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi htmlEndTag                 guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi htmlSpecialTagName         guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi htmlSpecialChar            guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi htmlLink                   guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi cssIdentifier              guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi cssClassName               guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi cssTagName                 guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi cssPseudoClass             guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi cssPseudoClassId           guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi sassId                     guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi sassIdChar                 guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi sassClass                  guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi sassClassChar              guifg=#3B7005 ctermfg=58   gui=NONE cterm=NONE
+hi sassMixin                  guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi sassMixing                 guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi sassMixinName              guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi coffeeAssignment           guifg=#A6A6A6 ctermfg=248  gui=NONE cterm=NONE
+hi coffeeAssignmentChar       guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi coffeeAssignmentMod        guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi coffeeInterpDelim          guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi javaScriptNumber           guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi txtHeader                  guifg=#FFFFFF ctermfg=231  gui=BOLD cterm=BOLD
+hi txtHeader2                 guifg=#FFFFFF ctermfg=231  gui=BOLD cterm=BOLD
+hi txtHeader3                 guifg=#FFFFFF ctermfg=231  gui=BOLD cterm=BOLD
+hi NERDTreePart               guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi NERDTreePartFile           guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi NERDTreeOpenable           guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi NERDTreeClosable           guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi NERDTreeUp                 guifg=#43A7EB ctermfg=74   gui=NONE cterm=NONE
+hi NERDTreeDir                guifg=#8C61CE ctermfg=98   gui=NONE cterm=NONE
+hi NERDTreeDirSlash           guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
+hi NERDTreeFile               guifg=#FFFFFF ctermfg=231  gui=NONE cterm=NONE
+hi NERDTreeExecFile           guifg=#DF3D2A ctermfg=166  gui=NONE cterm=NONE
+hi xmlTag                     guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi xmlTagName                 guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
+hi xmlEndTag                  guifg=#E57300 ctermfg=166  gui=NONE cterm=NONE
 
-hi Normal                     guifg=#A6A6A6 ctermfg=248 guibg=#161616 ctermbg=233
-hi Todo                       guifg=#A6A6A6 ctermfg=248 guibg=#161616 ctermbg=233
-hi Visual                     guibg=#1A3D5A ctermbg=23
-hi Comment                    guifg=#5E5E5E ctermfg=59  gui=NONE cterm=NONE
-hi MatchParen                 guifg=#DF3D2A ctermfg=166 guibg=#161616 ctermbg=233
-hi String                     guifg=#69CF22 ctermfg=76
-hi Title                      guifg=#FFFFFF ctermfg=231 gui=bold cterm=bold
-hi Function                   guifg=#FFFFFF ctermfg=231
-hi StorageClass               guifg=#A6A6A6 ctermfg=248
-hi Constant                   guifg=#DF3D2A ctermfg=166
-hi PreProc                    guifg=#DF3D2A ctermfg=166
-hi Special                    guifg=#3B7005 ctermfg=58
-hi Type                       guifg=#43A7EB ctermfg=74  gui=NONE cterm=NONE
-hi Number                     guifg=#DF3D2A ctermfg=166
-hi Conditional                guifg=#E57300 ctermfg=172
-hi Define                     guifg=#E57300 ctermfg=172
-hi Identifier                 guifg=#E57300 ctermfg=172
-hi Keyword                    guifg=#E57300 ctermfg=172
-hi Operator                   guifg=#E57300 ctermfg=172
-hi Statement                  guifg=#E57300 ctermfg=172 gui=NONE cterm=NONE
-hi Include                    guifg=#E57300 ctermfg=172
-hi Cursor                     guibg=#69CF22 ctermbg=76
-hi CursorLine                 guibg=#1A3D5A ctermbg=23
-hi LineNr                     guifg=#5E5E5E ctermfg=59
-hi NonText                    guifg=#5E5E5E ctermfg=59
-hi Folded                     guifg=#5E5E5E ctermfg=59  guibg=#000000 ctermbg=16
-hi FoldColumn                 guifg=#5E5E5E ctermfg=59  guibg=#161616 ctermbg=233
-hi VertSplit                  guifg=#161616 ctermfg=233 guibg=#5E5E5E ctermbg=59
-hi StatusLine                 guifg=#FFFFFF ctermfg=231 guibg=#202020 ctermbg=234 gui=NONE cterm=NONE
-hi StatusLineNC               guifg=#202020 ctermfg=234 guibg=#A6A6A6 ctermbg=248
-hi WildMenu                   guifg=#43A7EB ctermfg=74  guibg=#202020 ctermbg=234
-hi Pmenu                      guifg=#43A7EB ctermfg=74  guibg=#202020 ctermbg=234
-hi PmenuSel                   guifg=#DF3D2A ctermfg=166 guibg=#202020 ctermbg=234
-hi PmenuSbar                  guifg=#FFFFFF ctermfg=231 guibg=#FFFFFF ctermbg=231
-hi PmenuThumb                 guifg=#DF3D2A ctermfg=166 guibg=#DF3D2A ctermbg=166
-hi helpOption                 guifg=#43A7EB ctermfg=74  gui=NONE cterm=NONE
-hi helpNote                   guifg=#5E5E5E ctermfg=59  gui=italic
-hi helpSectionDelim           guifg=#DF3D2A ctermfg=166
-hi rubyClass                  guifg=#E57300 ctermfg=172
-hi rubyBlock                  guifg=#E57300 ctermfg=172
-hi rubyControl                guifg=#E57300 ctermfg=172
-hi rubyRailsMethod            guifg=#DF3D2A ctermfg=166
-hi rubyRailsRenderMethod      guifg=#DF3D2A ctermfg=166
-hi rubyRailsUserClass         guifg=#43A7EB ctermfg=74
-hi rubyInstanceVariable       guifg=#43A7EB ctermfg=74
-hi rubyClassVariable          guifg=#43A7EB ctermfg=74
-hi rubyMethodDeclaration      guifg=#FFFFFF ctermfg=231
-hi rubyFunction               guifg=#FFFFFF ctermfg=231
-hi rubyStringDelimiter        guifg=#69CF22 ctermfg=76
-hi rubyInterpolationDelimiter guifg=#5E5E5E ctermfg=59
-hi rubySymbol                 guifg=#8C61CE ctermfg=98
-hi htmlTitle                  guifg=#A6A6A6 ctermfg=248
-hi htmlTag                    guifg=#3B7005 ctermfg=58
-hi htmlArg                    guifg=#3B7005 ctermfg=58
-hi htmlTagName                guifg=#3B7005 ctermfg=58
-hi htmlEndTag                 guifg=#3B7005 ctermfg=58
-hi htmlSpecialTagName         guifg=#3B7005 ctermfg=58
-hi htmlSpecialChar            guifg=#DF3D2A ctermfg=166
-hi htmlLink                   guifg=#43A7EB ctermfg=74  gui=NONE cterm=NONE
-hi cssIdentifier              guifg=#3B7005 ctermfg=58
-hi cssClassName               guifg=#3B7005 ctermfg=58
-hi cssTagName                 guifg=#E57300 ctermfg=172 gui=NONE cterm=NONE
-hi cssPseudoClass             guifg=#43A7EB ctermfg=74
-hi cssPseudoClassId           guifg=#43A7EB ctermfg=74
-hi sassId                     guifg=#3B7005 ctermfg=58
-hi sassIdChar                 guifg=#3B7005 ctermfg=58
-hi sassClass                  guifg=#3B7005 ctermfg=58
-hi sassClassChar              guifg=#3B7005 ctermfg=58
-hi sassMixin                  guifg=#FFFFFF ctermfg=231
-hi sassMixing                 guifg=#FFFFFF ctermfg=231
-hi sassMixinName              guifg=#FFFFFF ctermfg=231
-hi coffeeAssignment           guifg=#A6A6A6 ctermfg=248
-hi coffeeAssignmentChar       guifg=#E57300 ctermfg=172
-hi coffeeAssignmentMod        guifg=#E57300 ctermfg=172
-hi coffeeInterpDelim          guifg=#5E5E5E ctermfg=59
-hi javaScriptNumber           guifg=#DF3D2A ctermfg=166
-hi txtHeader                  guifg=#FFFFFF ctermfg=231 gui=bold cterm=bold
-hi txtHeader2                 guifg=#FFFFFF ctermfg=231 gui=bold cterm=bold
-hi txtHeader3                 guifg=#FFFFFF ctermfg=231 gui=bold cterm=bold
-hi NERDTreePart               guifg=#5E5E5E ctermfg=59
-hi NERDTreePartFile           guifg=#43A7EB ctermfg=74
-hi NERDTreeOpenable           guifg=#43A7EB ctermfg=74
-hi NERDTreeClosable           guifg=#43A7EB ctermfg=74
-hi NERDTreeUp                 guifg=#43A7EB ctermfg=74
-hi NERDTreeDir                guifg=#8C61CE ctermfg=98
-hi NERDTreeDirSlash           guifg=#5E5E5E ctermfg=59
-hi NERDTreeFile               guifg=#FFFFFF ctermfg=231
-hi NERDTreeExecFile           guifg=#DF3D2A ctermfg=166
-hi xmlTag                     guifg=#E57300 ctermfg=172
-hi xmlTagName                 guifg=#E57300 ctermfg=172
-hi xmlEndTag                  guifg=#E57300 ctermfg=172
