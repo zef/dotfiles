@@ -65,10 +65,10 @@ vim_colors "kiwi" do
   NonText    dark_grey
 	Folded 		 dark_grey, black
   FoldColumn dark_grey, bg
-  VertSplit bg, dark_grey
+  VertSplit  dark_grey, bg
 
-  StatusLine white, light_bg, :gui => 'NONE'
-  StatusLineNC light_bg, light_grey
+  StatusLine   white, light_bg, :gui => 'NONE'
+  StatusLineNC light_grey, light_bg
   WildMenu blue, light_bg
 
   Pmenu blue, light_bg

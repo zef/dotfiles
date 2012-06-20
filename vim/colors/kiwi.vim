@@ -45,9 +45,9 @@ hi LineNr                     guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
 hi NonText                    guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
 hi Folded                     guifg=#5E5E5E ctermfg=59   guibg=#000000 ctermbg=16   gui=NONE cterm=NONE
 hi FoldColumn                 guifg=#5E5E5E ctermfg=59   guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
-hi VertSplit                  guifg=#161616 ctermfg=233  guibg=#5E5E5E ctermbg=59   gui=NONE cterm=NONE
+hi VertSplit                  guifg=#5E5E5E ctermfg=59   guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
 hi StatusLine                 guifg=#FFFFFF ctermfg=231  guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
-hi StatusLineNC               guifg=#202020 ctermfg=234  guibg=#A6A6A6 ctermbg=248  gui=NONE cterm=NONE
+hi StatusLineNC               guifg=#A6A6A6 ctermfg=248  guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
 hi WildMenu                   guifg=#43A7EB ctermfg=74   guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
 hi Pmenu                      guifg=#43A7EB ctermfg=74   guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
 hi PmenuSel                   guifg=#DF3D2A ctermfg=166  guibg=#202020 ctermbg=234  gui=NONE cterm=NONE
