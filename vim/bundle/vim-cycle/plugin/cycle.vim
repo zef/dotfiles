@@ -24,6 +24,7 @@ let s:options['global'] = [
 " css/sass/javascript/html
 let s:options['global'] = s:options['global'] + [
   \ ['div', 'p', 'span'],
+  \ ['max', 'min'],
   \ ['ul', 'ol'],
   \ ['class', 'id'],
   \ ['px', '%', 'em'],
@@ -46,6 +47,7 @@ let s:options['global'] = s:options['global'] + [
   \ ['Time', 'Date'],
   \ ['present', 'blank'],
   \ ['while', 'until'],
+  \ ['match', 'get', 'post', 'put']
 \]
 
 " Takes one or two arguments:
