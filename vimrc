@@ -11,7 +11,7 @@ colorscheme kiwi
 set guifont=Menlo:h12
 set foldcolumn=1
 set numberwidth=1
-set number
+" set number
 
 set listchars=tab:▸\ ,eol:¬
 set ts=2 sts=2 sw=2 expandtab
