@@ -274,6 +274,10 @@ if has("autocmd")
     " remove trailing whitespace on save
     autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+    " Save existing files automatically
+    " ignore warnings about new unsaved files
+    autocmd FocusLost * silent! :wa
+
   augroup END
 
 else
