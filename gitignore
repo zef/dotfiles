@@ -1,5 +1,6 @@
 .DS_Store
 zef.xcuserdatad/
 .powder
+.powrc
 .rvmrc
 .sass-cache/
