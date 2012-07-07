@@ -31,6 +31,7 @@ git_bundles = [
   "git://github.com/timcharper/textile.vim.git",
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/juvenn/mustache.vim.git",
+  "git://github.com/vim-scripts/applescript.vim.git",
   # Ruby and related
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/tpope/vim-rails.git",
