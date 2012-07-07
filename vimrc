@@ -64,6 +64,9 @@ nmap gV `[v`]
 
 " Search and replace word under cursor
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+" Search and replace visual selection
+vnoremap <Leader>r y:%s/<C-r>"//g<Left><Left>
+
 " Ack project for word under cursor (Command-Option-Shift-f)
 nnoremap <D-Ï> :Ack <C-r><C-w><CR>
 
