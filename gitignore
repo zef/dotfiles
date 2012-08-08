@@ -3,4 +3,5 @@ zef.xcuserdatad/
 .powder
 .powrc
 .rvmrc
+.rbenv-version
 .sass-cache/
