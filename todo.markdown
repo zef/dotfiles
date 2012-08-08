@@ -1,8 +1,10 @@
 Vim
 ---
 
-I'd like to find or write a plugin that deals with moving args around... 
+I'd like to find or write a plugin that deals with moving args around...
 could actually be quite tricky to implement.
+
+Look at: https://github.com/garybernhardt/dotfiles
 
 ```vim
 " Move an item forward in a list
