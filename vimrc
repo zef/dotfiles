@@ -8,7 +8,7 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 colorscheme kiwi
-set guifont=Menlo:h12
+set guifont=Menlo:h13
 set foldcolumn=1
 set numberwidth=1
 " set number
