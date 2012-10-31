@@ -40,7 +40,8 @@ git_bundles = [
   "git://github.com/tpope/vim-haml.git",
   "git://github.com/tpope/vim-cucumber.git",
   "git://github.com/kana/vim-textobj-user.git",
-  "git://github.com/nelstrom/vim-textobj-rubyblock.git"
+  "git://github.com/nelstrom/vim-textobj-rubyblock.git",
+  "git://github.com/ecomba/vim-ruby-refactoring.git"
 ]
 
 # also remember sparkup
