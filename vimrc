@@ -107,6 +107,18 @@ vmap <c-l> sta href=""<CR>f"a
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R '%'<CR><CR>
 
+" Rename current file (thanks Gary Bernhardt)
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>rn :call RenameFile()<cr>
+
 """"""""""" Plugin configuration
 
 " I use surround way more than substitute...
