@@ -49,6 +49,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 
 eval "$(rbenv init -)"
 
+# Faster ruby: https://gist.github.com/1688857
+export RUBY_GC_MALLOC_LIMIT=60000000
+export RUBY_FREE_MIN=200000
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
