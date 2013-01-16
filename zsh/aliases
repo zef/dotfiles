@@ -12,6 +12,6 @@ alias lsa='ls -a'
 alias cw='compass --watch'
 
 alias gw='gem which'
-alias sys='rvm use system'
 
-
+# https://coderwall.com/p/4tkkpq
+alias map="xargs -n1"
