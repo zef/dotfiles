@@ -3,7 +3,7 @@
 # follow symlinks
 --follow
 
---type-add=html=.haml,.liquid,.eco
+--type-add=html=.haml,.liquid,.eco,.mustache
 --type-add=css=.sass,.scss
 --type-add=js=.coffee
 --type-set=cucumber=.feature
