@@ -134,11 +134,13 @@ map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
 
-" might want to make this maintain selection in visual mode
-map <D-/> :TComment<CR>
+" add custom commentary map
+vmap <D-/> \\
+nmap <D-/> \\\
 " Ideally this would find the cursor position before and after, and adjust for
-" the movement, I'll assume that it's at least 2 charachters though for now.
-inoremap <D-/> <esc>:TComment<CR>2la
+" the movement, I'll assume that it's 2 characters forward though for now.
+imap <D-/> <esc>V\\gv<esc>2la
+
 
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'
