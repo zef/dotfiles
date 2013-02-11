@@ -42,6 +42,11 @@ let s:options['global'] = s:options['global'] + [
   \ ['mouseenter', 'mouseleave'],
   \ ['add', 'remove'],
   \ ['up', 'down'],
+  \ ['before', 'after'],
+  \ ['text', 'html'],
+  \ ['slow', 'fast'],
+  \ ['small', 'large'],
+  \ ['even', 'odd'],
 \]
 
 " ruby/eruby
