@@ -8,5 +8,6 @@
 --type-add=js=.coffee
 --type-set=cucumber=.feature
 --type-set=snippet=.snippets
-
+--type-set=plist=.plist
+--type-set=markdown=.markdown,.md
 
