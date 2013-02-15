@@ -22,8 +22,6 @@ snippet asre
 	assert_response :${1:success}, @response.body${2}
 snippet asrj
 	assert_rjs :<+replace+>, <+"<+dom id+>"+>
-snippet ass
-	assert_select '<+path+>'<+, :<+text+> => <+'<+inner_html+>'+>+> <+do<++>+>
 snippet bf
 	before_filter :${1:method}
 snippet bt

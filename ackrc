@@ -7,5 +7,6 @@
 --type-add=css=.sass,.scss
 --type-add=js=.coffee
 --type-set=cucumber=.feature
+--type-set=snippet=.snippets
 
 
