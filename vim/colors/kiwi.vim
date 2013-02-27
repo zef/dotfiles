@@ -19,6 +19,7 @@ endif
 
 hi Normal                     guifg=#A6A6A6 ctermfg=248  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
 hi Todo                       guifg=#A6A6A6 ctermfg=248  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE
+hi SignColumn                 guibg=NONE    ctermbg=NONE gui=NONE cterm=NONE
 hi Visual                     guibg=#1A3D5A ctermbg=23   gui=NONE cterm=NONE
 hi Comment                    guifg=#5E5E5E ctermfg=59   gui=NONE cterm=NONE
 hi MatchParen                 guifg=#DF3D2A ctermfg=166  guibg=#161616 ctermbg=233  gui=NONE cterm=NONE

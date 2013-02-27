@@ -141,6 +141,7 @@ nmap <D-/> \\\
 " the movement, I'll assume that it's 2 characters forward though for now.
 imap <D-/> <esc>V\\gv<esc>2la
 
+map <Leader>gg :call ToggleGitGutter()<CR>
 
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'

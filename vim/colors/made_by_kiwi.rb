@@ -23,10 +23,10 @@ vim_colors "kiwi" do
   Normal     light_grey, bg
   Todo       light_grey, bg
 
+  SignColumn nil, 'NONE'
 
   Visual nil, highlight
   # link :FoldColumn, :Todo, :to => :Normal
-
 
   Comment dark_grey, :gui => 'NONE'
   MatchParen red, bg
