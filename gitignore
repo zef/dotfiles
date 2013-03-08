@@ -4,4 +4,5 @@ zef.xcuserdatad/
 .powrc
 .rvmrc
 .rbenv-version
+.ruby-version
 .sass-cache/
