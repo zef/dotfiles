@@ -8,7 +8,7 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 colorscheme kiwi
-set guifont=Menlo:h13
+set guifont=Menlo:h14
 set foldcolumn=1
 set numberwidth=1
 " set number
@@ -142,6 +142,7 @@ nmap <D-/> \\\
 imap <D-/> <esc>V\\gv<esc>2la
 
 map <Leader>gg :call ToggleGitGutter()<CR>
+map <Leader>hh :call HexHighlight()<CR>
 
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'
