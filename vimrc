@@ -143,6 +143,7 @@ imap <D-/> <esc>V\\gv<esc>2la
 
 map <Leader>gg :call ToggleGitGutter()<CR>
 map <Leader>hh :call HexHighlight()<CR>
+map <Leader>cc :set cursorcolumn<CR>
 
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'
