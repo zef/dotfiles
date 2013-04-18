@@ -120,6 +120,11 @@ function! RenameFile()
 endfunction
 map <leader>rn :call RenameFile()<cr>
 
+" Remove smart quotes
+function! DumbQuotes()
+  call Preserve("s/[“”]/\"/ge|s/’/'/&")
+endfunction
+
 """"""""""" Plugin configuration
 
 " I use surround way more than substitute...
