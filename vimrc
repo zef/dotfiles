@@ -121,9 +121,7 @@ endfunction
 map <leader>rn :call RenameFile()<cr>
 
 " Remove smart quotes
-function! DumbQuotes()
-  call Preserve("s/[“”]/\"/ge|s/’/'/&")
-endfunction
+command! -bar -range=% DumbQuotes :<line1>,<line2>s/[“”]/\"/ge|<line1>,<line2>s/’/'/ge
 
 """"""""""" Plugin configuration
 
