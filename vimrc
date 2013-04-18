@@ -27,6 +27,7 @@ set nowrap
 set linebreak
 set autoread
 set scrolloff=5
+set spelllang=en_us
 
 " edit new line above/below from insert mode
 inoremap <D-CR> <esc>o
@@ -204,21 +205,6 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-" see http://vimcasts.org/episodes/tidying-whitespace/
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-set spelllang=en_us
 
 " required for ruby blocks as text-objects
 runtime macros/matchit.vim
