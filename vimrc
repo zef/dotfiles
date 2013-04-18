@@ -282,6 +282,7 @@ if has("autocmd")
 
     " Save existing files automatically
     " ignore warnings about new unsaved files
+    autocmd FocusLost * :call <SID>StripTrailingWhitespaces()
     autocmd FocusLost * silent! :wa
 
   augroup END
