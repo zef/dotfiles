@@ -6,6 +6,10 @@ could actually be quite tricky to implement.
 
 Look at: https://github.com/garybernhardt/dotfiles
 
+Look at gundo, start using undo trees.
+
+Use control-o to go back in movements
+
 ```vim
 " Move an item forward in a list
 nmap <Leader>a df,"_xf,i <esc>p
