@@ -20,8 +20,7 @@ git_bundles = [
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/tsaleh/vim-align.git",
-  "git://github.com/tsaleh/vim-shoulda.git",
-  "git://github.com/tsaleh/vim-supertab.git",
+  "git://github.com/ervandew/supertab.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/kana/vim-smartpunc.git",
   "git://github.com/altercation/vim-colors-solarized.git",
@@ -44,6 +43,7 @@ git_bundles = [
   "git://github.com/tpope/vim-cucumber.git",
   "git://github.com/kana/vim-textobj-user.git",
   "git://github.com/nelstrom/vim-textobj-rubyblock.git",
+  "git://github.com/tsaleh/vim-shoulda.git",
   "git://github.com/ecomba/vim-ruby-refactoring.git"
 ]
 
