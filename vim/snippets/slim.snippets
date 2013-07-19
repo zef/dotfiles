@@ -1,0 +1,15 @@
+snippet lt
+	= link_to "${1}", ${2:dest}
+snippet rp
+	= render :partial => "${1:file}"${2}
+snippet if
+	- if ${1}
+	  ${2}
+snippet unl
+	- unless ${1}
+	  ${2}
+snippet ife
+	- if ${1}
+		${2}
+	- else
+		${3}
