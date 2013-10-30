@@ -17,7 +17,16 @@ code=~/Dropbox/code
 # export ZSH_THEME="josh"
 # export ZSH_THEME="zhann"
 # export ZSH_THEME="edvardm"
-export ZSH_THEME="robbyrussell"
+# export ZSH_THEME="robbyrussell"
+# export ZSH_THEME="jad"
+
+POWERLINE_HIDE_HOST_NAME="true"
+# POWERLINE_HIDE_USER_NAME="true"
+# POWERLINE_DISABLE_RPROMPT="true"
+POWERLINE_NO_BLANK_LINE="true"
+export ZSH_THEME="powerline"
+
+set -o dvorak
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
@@ -33,7 +42,8 @@ export ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gem rails3 osx bundler pow)
+plugins=(git gem rails4 osx bundler pow)
+# vi-mode removed due to Mavericks issue...
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
