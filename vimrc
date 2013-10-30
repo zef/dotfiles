@@ -39,7 +39,7 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-" Move lines up and down single lines with help from Unimpaired
+" Move lines up and down with help from Unimpaired
 nmap <D-Up> [e
 nmap <D-Down> ]e
 vmap <D-Up> [egv
@@ -285,7 +285,7 @@ if has("autocmd")
 
     " Save existing files automatically
     " ignore warnings about new unsaved files
-    autocmd FocusLost * :call <SID>StripTrailingWhitespaces()
+    " autocmd FocusLost * :call <SID>StripTrailingWhitespaces()
     autocmd FocusLost * silent! :wa
 
   augroup END
