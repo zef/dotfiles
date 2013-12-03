@@ -42,7 +42,7 @@ set -o dvorak
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gem rails4 osx bundler pow)
+plugins=(git gem rails osx bundler pow)
 # vi-mode removed due to Mavericks issue...
 
 source $ZSH/oh-my-zsh.sh
