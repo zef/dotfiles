@@ -61,7 +61,8 @@ eval "$(rbenv init -)"
 
 # Faster ruby: https://gist.github.com/1688857
 export RUBY_GC_MALLOC_LIMIT=60000000
-export RUBY_FREE_MIN=200000
+export RUBY_GC_HEAP_FREE_SLOTS=200000
+export RUBY_FREE_MIN=200000 # same as above, for pre ruby 2.1.0
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
