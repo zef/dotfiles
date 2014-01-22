@@ -123,6 +123,8 @@ map <leader>rn :call RenameFile()<cr>
 " Remove smart quotes
 command! -bar -range=% DumbQuotes :<line1>,<line2>s/[“”]/\"/ge|<line1>,<line2>s/’/'/ge
 
+command! FormatJSON %!python -m json.tool
+
 """"""""""" Plugin configuration
 
 " I use surround way more than substitute...
