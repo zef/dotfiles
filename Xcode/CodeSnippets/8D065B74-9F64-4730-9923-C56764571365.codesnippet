@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+ (NSString *)reuseIdentifier
+{
+    static NSString *identifier = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^
+    {
+        identifier = NSStringFromClass(self);
+    });
+
+    return identifier;
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8D065B74-9F64-4730-9923-C56764571365</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Reuse Identifier</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
