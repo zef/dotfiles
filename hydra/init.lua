@@ -60,15 +60,18 @@ end
 
 
 
-local function isClose(a, b)
-  local threshold = 12
+local function isClose(a, b, threshold)
+  if not threshold then
+    threshold = 12
+  end
+
   return a == b or (a > b - threshold and a < b + threshold)
 end
 
 local function framesEqual(a, b)
   -- x and y must be exact
   -- width and height use isClose() because they can be imprecise depending on the application
-  return a.x == b.x and a.y == b.y and isClose(a.w, b.w) and isClose(a.h, b.h)
+  return isClose(a.x, b.x, 2) and isClose(a.y, b.y, 2) and isClose(a.w, b.w) and isClose(a.h, b.h)
 end
 
 frameGroups = {}
