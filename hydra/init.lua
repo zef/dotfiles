@@ -117,6 +117,12 @@ local function groupForScreen(group, screen)
       -- bottom left
       geometry.rect(s.x, s.y + halfHeight, halfWidth, halfHeight)
     }
+  elseif group == "verticalSections" then
+    local bottomSectionHeight = math.ceil(s.h/2.3)
+    newGroup = {
+      geometry.rect(s.x, s.y + s.h - bottomSectionHeight, s.w, bottomSectionHeight),
+      geometry.rect(s.x, s.y, s.w, s.h - bottomSectionHeight)
+    }
   elseif group == "verticalThirds" then
     local thirdHeight = math.ceil(s.h/3)
     newGroup = {
@@ -213,8 +219,9 @@ hotkey.bind({"alt"}, "0", nextScreen)
 hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
 hotkey.bind({"alt"}, "2", function() cyclePositionGroup("center") end)
 hotkey.bind({"alt"}, "3", function() cyclePositionGroup("quarters") end)
-hotkey.bind({"alt"}, "4", function() cyclePositionGroup("verticalThirds") end)
-hotkey.bind({"alt"}, "5", function() cyclePositionGroup("horizontalThirds") end)
+hotkey.bind({"alt"}, "4", function() cyclePositionGroup("verticalSections") end)
+hotkey.bind({"alt"}, "5", function() cyclePositionGroup("verticalThirds") end)
+hotkey.bind({"alt"}, "6", function() cyclePositionGroup("horizontalThirds") end)
 
 
 -- move the window to the right a bit, and make it a little shorter
