@@ -161,8 +161,9 @@ end
 local function cyclePositionGroup(groupName)
   -- hydra.alert(group[2].x, 2)
   local win = window.focusedwindow()
-  local group = groupForScreen(groupName, win:screen())
+  if (win == nil) then return end
 
+  local group = groupForScreen(groupName, win:screen())
   if (group == nil) then return end
 
   local currentFrame = win:frame()
