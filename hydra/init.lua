@@ -16,31 +16,38 @@ hotkey.bind({"cmd", "ctrl", "alt"}, "R", repl.open)
 
 -- save the time when updates are checked
 function checkforupdates()
-  updates.check()
-  settings.set('lastcheckedupdates', os.time())
+  hydra.updates.check(function(available)
+      -- what to do when an update is checked
+      if available then
+        notify.show("Hydra update available", "", "Click here to see the changelog and maybe even install it", "showupdate")
+      else
+        hydra.alert("No update available.")
+      end
+  end)
+  hydra.settings.set('lastcheckedupdates', os.time())
 end
 
--- show a helpful menu
--- menu.show(function()
---     local updatetitles = {[true] = "Install Update", [false] = "Check for Update..."}
---     local updatefns = {[true] = updates.install, [false] = checkforupdates}
---     local hasupdate = (updates.newversion ~= nil)
 
---     return {
---       {title = "Reload Config", fn = hydra.reload},
---       {title = "-"},
---       {title = "About", fn = hydra.showabout},
---       {title = updatetitles[hasupdate], fn = updatefns[hasupdate]},
---       {title = "Quit Hydra", fn = os.exit},
---     }
--- end)
+-- show a helpful menu
+menu.show(function()
+    local updatetitles = {[true] = "Install Update", [false] = "Check for Update..."}
+    local updatefns = {[true] = updates.install, [false] = checkforupdates}
+    local hasupdate = (updates.newversion ~= nil)
+
+    return {
+      {title = "Reload Config", fn = hydra.reload},
+      {title = "-"},
+      {title = "About", fn = hydra.showabout},
+      {title = updatetitles[hasupdate], fn = updatefns[hasupdate]},
+      {title = "Quit Hydra", fn = os.exit},
+    }
+end)
 
 -- utilities
 local function manualReload()
   hydra.alert("Reloading Hydra...", 0.8)
   hydra.reload()
 end
-hotkey.bind({"alt"}, "9", manualReload)
 
 local function log(string)
   print(string)
@@ -151,8 +158,6 @@ local function framesForScreenGroup(screenId, group)
   -- hydra.alert(frameGroups["halves"][2].x, 2)
 end
 
--- framesForScreenGroup()
-
 local function cyclePositionGroup(groupName)
   -- hydra.alert(group[2].x, 2)
   local win = window.focusedwindow()
@@ -214,6 +219,15 @@ local function nextScreen()
 	win:setframe(newFrame)
 end
 
+lastPosition = {}
+local function recordCurrentPosition()
+  lastPosition['frame'] = window.focusedwindow():frame()
+end
+
+local function recallRecordedPosition()
+  window.focusedwindow():setframe(lastPosition['frame'])
+end
+
 hotkey.bind({"alt"}, "0", nextScreen)
 
 hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
@@ -223,6 +237,10 @@ hotkey.bind({"alt"}, "4", function() cyclePositionGroup("verticalSections") end)
 hotkey.bind({"alt"}, "5", function() cyclePositionGroup("verticalThirds") end)
 hotkey.bind({"alt"}, "6", function() cyclePositionGroup("horizontalThirds") end)
 
+hotkey.bind({"alt"}, "7", recordCurrentPosition)
+hotkey.bind({"alt"}, "8", recallRecordedPosition)
+
+hotkey.bind({"alt"}, "9", manualReload)
 
 -- move the window to the right a bit, and make it a little shorter
 -- hotkey.new({"cmd", "ctrl", "alt"}, "J", function()
@@ -237,18 +255,6 @@ hotkey.bind({"alt"}, "6", function() cyclePositionGroup("horizontalThirds") end)
 local function showupdate()
   os.execute('open https://github.com/sdegutis/Hydra/releases')
 end
-
--- what to do when an udpate is checked
-function updates.available(available)
-  if available then
-    notify.show("Hydra update available", "", "Click here to see the changelog and maybe even install it", "showupdate")
-  else
-    hydra.alert("No update available.")
-  end
-end
-
--- Uncomment this if you want Hydra to make sure it launches at login
--- autolaunch.set(true)
 
 -- check for updates every week
 timer.new(timer.weeks(1), checkforupdates):start()
