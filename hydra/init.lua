@@ -226,7 +226,9 @@ local function recordCurrentPosition()
 end
 
 local function recallRecordedPosition()
-  window.focusedwindow():setframe(lastPosition['frame'])
+  if (lastPosition['frame']) then
+    window.focusedwindow():setframe(lastPosition['frame'])
+  end
 end
 
 hotkey.bind({"alt"}, "0", nextScreen)
