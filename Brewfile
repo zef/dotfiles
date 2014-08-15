@@ -8,6 +8,7 @@ install openssl
 install imagemagick
 install postgresql
 install ack
+install httpie
 
 tap caskroom/cask
 install brew-cask
