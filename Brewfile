@@ -17,6 +17,5 @@ cask install firefox
 cask install dropbox
 cask install skype
 cask install atom
-cask install hydra
 
 cleanup
