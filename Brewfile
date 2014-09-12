@@ -10,13 +10,4 @@ install postgresql
 install ack
 install httpie
 
-tap caskroom/cask
-install brew-cask
-
-cask install google-chrome
-cask install firefox
-cask install dropbox
-cask install skype
-cask install atom
-
 cleanup
