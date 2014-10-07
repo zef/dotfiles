@@ -4,6 +4,10 @@ set smartcase
 set incsearch
 set clipboard=unnamed
 
+" Temporary hack to fix issue with no cursor in playgrounds, should be fixed
+" soon. (10/05/2015)
+set blinkcursor
+
 " clear highlights
 nnoremap <esc> :set nohlsearch<return><esc>
 
