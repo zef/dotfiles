@@ -56,6 +56,7 @@ cdpath=($HOME/Dropbox/code)
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
+export PATH="/Users/zef/Dropbox/code/dotfiles/bin:$PATH"
 
 eval "$(rbenv init -)"
 
