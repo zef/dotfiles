@@ -213,6 +213,26 @@ local function recallRecordedPosition()
   end
 end
 
+local function copyMousePosition()
+  local p = mouse.get()
+  local x = math.ceil(p.x)
+  local y = math.ceil(p.y)
+  local winFrame = window.focusedwindow():frame()
+
+  -- local starting = "x: " .. x .. ", y: " .. y
+
+  local yAdjustment = 24 -- for toolbar, generally
+  local xAdjustment = 0
+  local adjusted = "x: " .. x - winFrame.x - xAdjustment .. ", y: " .. y - winFrame.y - yAdjustment
+
+  -- hydra.exec('echo "' .. adjusted .. '" >> ~/Desktop/coordinates.txt')
+  hydra.exec('echo "' .. adjusted .. '" | pbcopy')
+
+
+  hydra.alert("Copied: " .. adjusted, 0.8)
+end
+
+
 hotkey.bind({"alt"}, "0", nextScreen)
 
 hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
@@ -226,6 +246,8 @@ hotkey.bind({"alt"}, "7", recordCurrentPosition)
 hotkey.bind({"alt"}, "8", recallRecordedPosition)
 
 hotkey.bind({"alt"}, "9", manualReload)
+
+hotkey.bind({"alt"}, "`", copyMousePosition)
 
 -- move the window to the right a bit, and make it a little shorter
 -- hotkey.new({"cmd", "ctrl", "alt"}, "J", function()
