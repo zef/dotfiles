@@ -4,11 +4,11 @@
 
 git_bundles = [
   # "git://github.com/astashov/vim-ruby-debugger.git",
-  # "git://git.wincent.com/command-t.git",
   # "git://github.com/tpope/vim-speeddating.git",
   # "git://github.com/mjbrownie/swapit.git",
   #
   # General
+  "git://git.wincent.com/command-t.git",
   "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/tpope/vim-git.git",
