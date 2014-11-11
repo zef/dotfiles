@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+if remote = `git remote -v`.lines.find { |l| l.match /bitbucket/ }
+  matches = remote.match /(?<domain>bitbucket.org).(?<path>.*)\.git/
+  url = "https://#{matches[:domain]}/#{matches[:path]}"
+
+  branch = `git symbolic-ref --short HEAD`.lines.first
+  url += "/branch/#{branch}"
+
+  system "open #{url}"
+else
+  puts "No BitBucket remote :("
+end
