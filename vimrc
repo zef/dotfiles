@@ -153,6 +153,11 @@ map <Leader>cc :set cursorcolumn<CR>
 
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'
+
+
+let g:CommandTMaxHeight = 14
+let g:CommandTMinHeight = 14
+
 """"""""""""""""""""""""""""""""
 
 " See /Applications/MacVim.app/Contents/Resources/vim/gvimrc
