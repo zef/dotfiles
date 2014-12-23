@@ -6,7 +6,7 @@ export GEM_EDITOR='mvim'
 export BUNDLER_EDITOR='mvim'
 export NODE_PATH='/usr/local/lib/node'
 
-code=~/Dropbox/code
+code=~/code
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,11 +52,11 @@ source ~/.zsh/aliases
 [[ -f ~/.zsh/local ]] && source ~/.zsh/local
 
 setopt auto_cd
-cdpath=($HOME/Dropbox/code)
+cdpath=($HOME/code)
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
-export PATH="/Users/zef/Dropbox/code/dotfiles/bin:$PATH"
+export PATH="/Users/zef/code/dotfiles/bin:$PATH"
 
 eval "$(rbenv init -)"
 
