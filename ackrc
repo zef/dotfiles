@@ -11,6 +11,7 @@
 --type-set=plist=.plist
 --type-set=markdown=.markdown,.md
 --type-set=svg=.svg
+--type-set=xib=.xib,.storyboard
 
 --nosvg
 
