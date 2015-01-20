@@ -9,5 +9,7 @@ install imagemagick
 install postgresql
 install ack
 install httpie
+install lua
+install luarocks
 
 cleanup

@@ -1,35 +1,13 @@
--- Hi!
--- Save this as ~/.hydra/init.lua and choose Reload Config from the menu
+local application = require "mjolnir.application"
+local hotkey = require "mjolnir.hotkey"
+local window = require "mjolnir.window"
+local fnutils = require "mjolnir.fnutils"
+local geometry = require "mjolnir.geometry"
+local alert = require "mjolnir.alert"
 
--- pathwatcher.new(os.getenv("HOME") .. "/.hydra/", hydra.reload):start()
-autolaunch.set(true)
-logger.lines = {}
--- logger.show()
-
--- hydra.alert("Hydra sample config loaded", 1.5)
-
--- open a repl
---   the repl is a Lua prompt; type "print('hello world')"
---   when you're in the repl, type "help" to get started
---   almost all readline functionality works in the repl
-hotkey.bind({"cmd", "ctrl", "alt"}, "R", repl.open)
-
-
--- show a helpful menu
-menu.show(function()
-    return {
-      {title = "Reload Config", fn = hydra.reload},
-      {title = "-"},
-      {title = "About", fn = hydra.showabout},
-      {title = "Quit Hydra", fn = os.exit},
-    }
-end)
-
--- utilities
-local function manualReload()
-  hydra.alert("Reloading Hydra...", 0.8)
-  hydra.reload()
-end
+-- luarocks install mjolnir.application
+-- luarocks install mjolnir.hotkey
+-- luarocks install mjolnir.alert
 
 local function log(string)
   print(string)
@@ -41,17 +19,15 @@ end
 
 local function logFrame(frame, title)
   if title then
-    print(title .. ": " .. frameString(frame))
+    log(title .. ": " .. frameString(frame))
   else
-    print(frameString(frame))
+    log(frameString(frame))
   end
 end
 
-
-
 local function isClose(a, b, threshold)
   if not threshold then
-    threshold = 12
+    threshold = 20
   end
 
   return a == b or (a > b - threshold and a < b + threshold)
@@ -66,7 +42,7 @@ end
 frameGroups = {}
 local function groupForScreen(group, screen)
   local win = window.focusedwindow()
-  local s = screen:frame_without_dock_or_menu()
+  local s = screen:frame()
   local screenKey = s.x .. s.y .. s.w .. s.h
 
   if frameGroups[screenKey] then
@@ -178,8 +154,8 @@ end
 local function nextScreen()
   local win = window.focusedwindow()
 	local frame = win:frame()
-	local thisScreen = win:screen():frame_including_dock_and_menu()
-	local nextScreen = win:screen():next():frame_including_dock_and_menu()
+	local thisScreen = win:screen():frame()
+	local nextScreen = win:screen():next():frame()
 
   local adjustedFrame = frameOnScreen(frame, thisScreen)
 
@@ -229,9 +205,13 @@ local function copyMousePosition()
   hydra.exec('echo "' .. adjusted .. '" | pbcopy')
 
 
-  hydra.alert("Copied: " .. adjusted, 0.8)
+  alert.show("Copied: " .. adjusted, 0.8)
 end
 
+local function manualReload()
+  alert.show "Reloading Mjolnir..."
+  mjolnir.reload()
+end
 
 hotkey.bind({"alt"}, "0", nextScreen)
 
