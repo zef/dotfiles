@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+branch = `git symbolic-ref --short HEAD`.lines.first.chomp
+command = "/gitlab:pr:new dma-ios #{branch} develop"
+`echo "#{command}" | pbcopy`
+puts "Copied: #{command}"
