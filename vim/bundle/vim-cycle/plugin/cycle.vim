@@ -17,6 +17,7 @@ let s:options['global'] = [
   \ ['if', 'unless'],
   \ ['true', 'false'],
   \ ['YES', 'NO'],
+  \ ['on', 'off'],
   \ ['first', 'last'],
   \ ['else', 'else if'],
 \]
@@ -47,6 +48,7 @@ let s:options['global'] = s:options['global'] + [
   \ ['slow', 'fast'],
   \ ['small', 'large'],
   \ ['even', 'odd'],
+  \ ['inside', 'outside'],
 \]
 
 " ruby/eruby
@@ -55,6 +57,7 @@ let s:options['global'] = s:options['global'] + [
   \ ['Time', 'Date'],
   \ ['present', 'blank'],
   \ ['while', 'until'],
+  \ ['only', 'except'],
   \ ['match', 'get', 'post', 'put']
 \]
 
@@ -108,9 +111,9 @@ function! s:Cycle(direction)
     " endif
 
     if a:direction == 1
-      exe "norm! \<C-A>"
+      exe "norm! " . v:count1 . "\<C-A>"
     else
-      exe "norm! \<C-X>"
+      exe "norm! " . v:count1 . "\<C-X>"
     endif
   else
     let [group, start, end, string] = match

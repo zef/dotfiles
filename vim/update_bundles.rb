@@ -8,6 +8,7 @@ git_bundles = [
   # "git://github.com/mjbrownie/swapit.git",
   #
   # General
+  "git://github.com/zef/vim-cycle.git",
   "git://git.wincent.com/command-t.git",
   "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-fugitive.git",
