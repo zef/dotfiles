@@ -42,6 +42,7 @@ git_bundles = [
   "git://github.com/Matt-Deacalion/vim-systemd-syntax.git",
   "git://github.com/evanmiller/nginx-vim-syntax.git",
   "git://github.com/groenewege/vim-less.git",
+  "git://github.com/fatih/vim-go.git",
   # "git://github.com/toyamarinyon/vim-swift.git",
   "git://github.com/Keithbsmiley/swift.vim",
   # Ruby and related
