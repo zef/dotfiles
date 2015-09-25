@@ -1,15 +1,14 @@
-update
-upgrade
+tap 'caskroom/cask'
 
-install rbenv
-install ruby-build
-install readline
-install openssl
-install imagemagick
-install postgresql
-install ack
-install httpie
-install lua
-install luarocks
-
-cleanup
+brew 'rbenv'
+brew 'ruby-build'
+brew 'readline'
+brew 'openssl'
+brew 'imagemagick'
+brew 'postgresql'
+brew 'ack'
+brew 'httpie'
+brew 'lua'
+brew 'luarocks'
+brew 'ffmpeg'
+brew 'clang-format'
