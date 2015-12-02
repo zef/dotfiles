@@ -4,6 +4,7 @@ local window = require "mjolnir.window"
 local fnutils = require "mjolnir.fnutils"
 local geometry = require "mjolnir.geometry"
 local alert = require "mjolnir.alert"
+alert.show("Mjolnir Reloaded...", 0.8)
 
 -- luarocks install mjolnir.application
 -- luarocks install mjolnir.hotkey
@@ -63,12 +64,25 @@ local function groupForScreen(group, screen)
       -- right half
       geometry.rect(s.x + s.w/2, s.y, s.w/2, s.h)
     }
-  elseif group == "center" then
-    local centeredOffset = 0.2
-    newGroup = {
-      geometry.rect(s.x, s.y, s.w, s.h),
-      geometry.rect(s.x + s.w * centeredOffset, s.y, s.w - s.w * centeredOffset * 2, s.h),
-    }
+  elseif group == "center" or group == "centerSides" then
+    local desiredOffset = 0.25
+    local centeredWidth = math.max(1100, s.w - s.w * desiredOffset * 2)
+    local centeredMargins = (s.w - centeredWidth) / 2
+    local centered = geometry.rect(s.x + centeredMargins, s.y, centeredWidth, s.h)
+    if group == "center" then
+      local full = geometry.rect(s.x, s.y, s.w, s.h)
+      if s.w > 1920 then
+        newGroup = { centered, full }
+      else
+        newGroup = { full, centered }
+      end
+    else
+      -- the edeges outside the centered window
+      newGroup = {
+        geometry.rect(s.x, s.y, centeredMargins, s.h),
+        geometry.rect(centeredMargins + centeredWidth, s.y, centeredMargins, s.h),
+      }
+    end
   elseif group == "quarters" then
     local halfWidth = s.w/2
     local halfHeight = s.h/2
@@ -104,7 +118,7 @@ local function groupForScreen(group, screen)
       geometry.rect(s.x + thirdWidth * 2, s.y, thirdWidth, s.h),
     }
   else
-    hydra.alert("No group found: " .. group, 5)
+    alert.show("No group found: " .. group, 5)
     return nil
   end
 
@@ -180,13 +194,16 @@ end
 
 lastPosition = {}
 local function recordCurrentPosition()
-  lastPosition['frame'] = window.focusedwindow():frame()
+  lastPosition['frame'] = y
 end
 
 local function recallRecordedPosition()
   if (lastPosition['frame']) then
     window.focusedwindow():setframe(lastPosition['frame'])
   end
+end
+local function printCurrentPosition()
+  alert.show(frameString(window.focusedwindow():frame()))
 end
 
 local function copyMousePosition()
@@ -204,12 +221,10 @@ local function copyMousePosition()
   -- hydra.exec('echo "' .. adjusted .. '" >> ~/Desktop/coordinates.txt')
   hydra.exec('echo "' .. adjusted .. '" | pbcopy')
 
-
   alert.show("Copied: " .. adjusted, 0.8)
 end
 
 local function manualReload()
-  alert.show "Reloading Mjolnir..."
   mjolnir.reload()
 end
 
@@ -217,17 +232,19 @@ hotkey.bind({"alt"}, "0", nextScreen)
 
 hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
 hotkey.bind({"alt"}, "2", function() cyclePositionGroup("center") end)
-hotkey.bind({"alt"}, "3", function() cyclePositionGroup("quarters") end)
-hotkey.bind({"alt"}, "4", function() cyclePositionGroup("verticalSections") end)
-hotkey.bind({"alt"}, "5", function() cyclePositionGroup("verticalThirds") end)
-hotkey.bind({"alt"}, "6", function() cyclePositionGroup("horizontalThirds") end)
+hotkey.bind({"alt", "cmd"}, "2", function() cyclePositionGroup("centerSides") end)
+hotkey.bind({"alt"}, "3", function() cyclePositionGroup("horizontalThirds") end)
+hotkey.bind({"alt"}, "4", function() cyclePositionGroup("quarters") end)
+hotkey.bind({"alt"}, "5", function() cyclePositionGroup("verticalSections") end)
+hotkey.bind({"alt"}, "6", function() cyclePositionGroup("verticalThirds") end)
 
 hotkey.bind({"alt"}, "7", recordCurrentPosition)
+hotkey.bind({"alt", "shift"}, "7", printCurrentPosition)
 hotkey.bind({"alt"}, "8", recallRecordedPosition)
 
 hotkey.bind({"alt"}, "9", manualReload)
 
-hotkey.bind({"alt"}, "`", copyMousePosition)
+-- hotkey.bind({"alt"}, "`", copyMousePosition)
 
 -- move the window to the right a bit, and make it a little shorter
 -- hotkey.new({"cmd", "ctrl", "alt"}, "J", function()
