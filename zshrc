@@ -57,6 +57,7 @@ cdpath=($HOME/code)
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
 export PATH="/Users/zef/code/dotfiles/bin:$PATH"
+export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:${PATH}"
 
 eval "$(rbenv init -)"
 
