@@ -1,7 +1,9 @@
 # html5.vim
 
-HTML5 + inline SVG omnicomplete funtion and syntax for Vim.
+HTML5 + inline SVG omnicomplete function, indent and syntax for Vim.
 Based on the default htmlcomplete.vim.
+
+This plugin contributes to [vim-polyglot](https://github.com/sheerun/vim-polyglot) language pack.
 
 ## Feature
 
@@ -13,12 +15,14 @@ Based on the default htmlcomplete.vim.
 
 ## Install
 
-Goto [get][html5.vim] vimball file. Open it with vim and execute :so%
-or 
+Use [Vundle][] or [pathogen.vim][] is recommended.
 
-    git clone git://github.com/othree/html5.vim.git
-    cd html5.vim
-    make install
+[Vundle]:https://github.com/gmarik/vundle
+[pathogen.vim]:https://github.com/tpope/vim-pathogen
+
+For Vundle:
+
+    Plugin 'othree/html5.vim'
 
 ## Configure
 
@@ -46,7 +50,7 @@ Disable WAI-ARIA attribute support:
 
 ## License
 
-Copyright (c) 2010 Wei-Ko Kao, 2012 HT de Beer
+Copyright (c) 2010-2013 Wei-Ko Kao, 2012 HT de Beer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -81,7 +85,7 @@ THE SOFTWARE.
 
 [html5.vim]:http://www.vim.org/scripts/script.php?script_id=3236
 
-[microdata]:http://dev.w3.org/html5/md/
+[microdata]:http://www.w3.org/TR/microdata/
 [RDFa]:http://www.w3.org/TR/rdfa-syntax/
 [aria]:http://www.w3.org/TR/wai-aria/
 
