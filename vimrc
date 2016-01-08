@@ -40,12 +40,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " Move lines up and down with help from Unimpaired
-nmap <D-Up> [e
-nmap <D-Down> ]e
-vmap <D-Up> [egv
-vmap <D-Down> ]egv
-imap <D-Up> <esc>[ea
-imap <D-Down> <esc>]ea
+nmap <D-“> [e
+nmap <D-‘> ]e
+vmap <D-“> [egv
+vmap <D-‘> ]egv
+imap <D-“> <esc>[ea
+imap <D-‘> <esc>]ea
 
 " duplicate line or selection
 nmap <D-D> yyp
