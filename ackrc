@@ -3,6 +3,8 @@
 # follow symlinks
 --follow
 
+--ignore-dir=.build
+
 --type-add=html=.haml,.liquid,.eco,.mustache,.slim
 --type-add=css=.sass,.scss
 --type-add=js=.coffee
