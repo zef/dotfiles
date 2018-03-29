@@ -7,6 +7,7 @@ zef.xcuserdatad/
 .ruby-version
 .sass-cache/
 
+.DS_Store
 
 # http://robots.thoughtbot.com/post/33796217972/xcode-and-git-bridging-the-gap
 # Xcode per-user config
