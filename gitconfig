@@ -16,10 +16,10 @@
   changed = green
   untracked = cyan
 [user]
-  name = Zef Houssney
-  email = zef@madebykiwi.com
+	name = Zef Houssney
+	email = zef@madebykiwi.com
 [core]
-  excludesfile = /Users/zef/.gitignore
+	excludesfile = /Users/zef/.gitignore
 [alias]
   c = commit -am
   br = branch
@@ -35,3 +35,5 @@
 
 [push]
 	default = simple
+[branch]
+	autosetuprebase = always
