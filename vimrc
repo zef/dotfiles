@@ -264,6 +264,8 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.txt setfiletype text
   autocmd BufNewFile,BufRead Podfile.lock setfiletype yaml
 
+  autocmd Filetype swift setlocal ts=4 sts=4 sw=4
+
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
