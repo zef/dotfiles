@@ -46,3 +46,19 @@ function! s:NextTextObject(motion, dir)
   exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 ```
+
+
+Git
+---
+
+Maybe incorporate some stuff for dealing with git branches?
+
+```
+git branch --merged | grep -v develop | grep -v master | xargs git branch -d
+git branch --remote --merged | grep -v develop | grep -v master | sed -e 's/origin\//:/' | xargs -n 1 git push origin
+git remote update origin —prune
+```
+
+
+
+
