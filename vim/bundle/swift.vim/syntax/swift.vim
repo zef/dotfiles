@@ -54,7 +54,7 @@ delfunction s:CommentKeywordMatch
 " Literals
 " Strings
 syntax region swiftString start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=swiftInterpolatedWrapper oneline
-syntax region swiftInterpolatedWrapper start="\v[^\\]\\\(\s*" end="\v\s*\)" contained containedin=swiftString contains=swiftInterpolatedString,swiftString oneline
+syntax region swiftInterpolatedWrapper start="\v[^\\]\zs\\\(\s*" end="\v\s*\)" contained containedin=swiftString contains=swiftInterpolatedString,swiftString oneline
 syntax match swiftInterpolatedString "\v\w+(\(\))?" contained containedin=swiftInterpolatedWrapper oneline
 
 " Numbers
@@ -62,9 +62,9 @@ syntax match swiftNumber "\v<\d+>"
 syntax match swiftNumber "\v<(\d+_+)+\d+(\.\d+(_+\d+)*)?>"
 syntax match swiftNumber "\v<\d+\.\d+>"
 syntax match swiftNumber "\v<\d*\.?\d+([Ee]-?)?\d+>"
-syntax match swiftNumber "\v<0x\x+([Pp]-?)?\x+>"
-syntax match swiftNumber "\v<0b[01]+>"
-syntax match swiftNumber "\v<0o\o+>"
+syntax match swiftNumber "\v<0x[[:xdigit:]_]+([Pp]-?)?\x+>"
+syntax match swiftNumber "\v<0b[01_]+>"
+syntax match swiftNumber "\v<0o[0-7_]+>"
 
 " BOOLs
 syntax keyword swiftBoolean
@@ -89,8 +89,9 @@ syntax match swiftOperator "\v\<"
 syntax match swiftOperator "\v\>"
 syntax match swiftOperator "\v\?\?"
 
-" Methods/Functions
+" Methods/Functions/Properties
 syntax match swiftMethod "\(\.\)\@<=\w\+\((\)\@="
+syntax match swiftProperty "\(\.\)\@<=\<\w\+\>(\@!"
 
 " Swift closure arguments
 syntax match swiftClosureArgument "\$\d\+\(\.\d\+\)\?"
@@ -101,8 +102,8 @@ syntax keyword swiftAvailabilityArg renamed unavailable introduced deprecated ob
 
 " Keywords {{{
 syntax keyword swiftKeywords
-      \ as
       \ associatedtype
+      \ associativity
       \ atexit
       \ break
       \ case
@@ -119,6 +120,7 @@ syntax keyword swiftKeywords
       \ else
       \ extension
       \ fallthrough
+      \ fileprivate
       \ final
       \ for
       \ func
@@ -127,12 +129,10 @@ syntax keyword swiftKeywords
       \ if
       \ import
       \ in
-      \ indirect
       \ infix
       \ init
       \ inout
       \ internal
-      \ is
       \ lazy
       \ let
       \ mutating
@@ -142,13 +142,14 @@ syntax keyword swiftKeywords
       \ optional
       \ override
       \ postfix
+      \ precedence
+      \ precedencegroup
       \ prefix
       \ private
       \ protocol
       \ public
       \ repeat
       \ required
-      \ rethrows
       \ return
       \ self
       \ set
@@ -157,7 +158,6 @@ syntax keyword swiftKeywords
       \ super
       \ switch
       \ throw
-      \ throws
       \ try
       \ typealias
       \ unowned
@@ -166,6 +166,13 @@ syntax keyword swiftKeywords
       \ where
       \ while
       \ willSet
+
+syntax keyword swiftDefinitionModifier
+      \ rethrows
+      \ throws
+
+syntax match swiftMultiwordKeywords "indirect case"
+syntax match swiftMultiwordKeywords "indirect enum"
 " }}}
 
 " Names surrounded by backticks. This aren't limited to keywords because 1)
@@ -178,6 +185,7 @@ syntax keyword swiftAttributes
       \ @autoclosure
       \ @available
       \ @convention
+      \ @discardableResult
       \ @exported
       \ @IBAction
       \ @IBDesignable
@@ -200,14 +208,28 @@ syntax keyword swiftStructure
       \ struct
       \ enum
 
+syntax keyword swiftDebugIdentifier
+      \ #column
+      \ #file
+      \ #function
+      \ #line
+      \ __COLUMN__
+      \ __FILE__
+      \ __FUNCTION__
+      \ __LINE__
+
+syntax keyword swiftLineDirective #setline
+
 syntax region swiftTypeWrapper start="\v:\s*" skip="\s*,\s*$*\s*" end="$\|/"me=e-1 contains=ALLBUT,swiftInterpolatedWrapper transparent
+syntax region swiftTypeCastWrapper start="\(as\|is\)\(!\|?\)\=\s\+" end="\v(\s|$|\{)" contains=swiftType,swiftCastKeyword keepend transparent oneline
 syntax region swiftGenericsWrapper start="\v\<" end="\v\>" contains=swiftType transparent oneline
 syntax region swiftLiteralWrapper start="\v\=\s*" skip="\v[^\[\]]\(\)" end="\v(\[\]|\(\))" contains=ALL transparent oneline
 syntax region swiftReturnWrapper start="\v-\>\s*" end="\v(\{|$)" contains=swiftType transparent oneline
-syntax match swiftType "\v<\u\w*" contained containedin=swiftGenericsWrapper,swiftTypeWrapper,swiftLiteralWrapper,swiftGenericsWrapper
+syntax match swiftType "\v<\u\w*" contained containedin=swiftTypeWrapper,swiftLiteralWrapper,swiftGenericsWrapper,swiftTypeCastWrapper
+syntax match swiftTypeDeclaration /->/ skipwhite nextgroup=swiftType
 
 syntax keyword swiftImports import
-
+syntax keyword swiftCastKeyword is as contained
 
 " 'preprocesor' stuff
 syntax keyword swiftPreprocessor
@@ -215,13 +237,14 @@ syntax keyword swiftPreprocessor
       \ #elseif
       \ #else
       \ #endif
+      \ #selector
 
 
 " Comment patterns
 syntax match swiftComment "\v\/\/.*$"
       \ contains=swiftTodos,swiftDocString,swiftMarker,@Spell oneline
 syntax region swiftComment start="/\*" end="\*/"
-      \ contains=swiftTodos,swiftDocString,swiftMarker,swiftComment,@Spell fold
+      \ contains=swiftTodos,swiftDocString,swiftMarker,@Spell fold
 
 
 " Set highlights
@@ -233,11 +256,14 @@ highlight default link swiftMarker Comment
 
 highlight default link swiftString String
 highlight default link swiftInterpolatedWrapper Delimiter
+highlight default link swiftTypeDeclaration Delimiter
 highlight default link swiftNumber Number
 highlight default link swiftBoolean Boolean
 
 highlight default link swiftOperator Operator
+highlight default link swiftCastKeyword Keyword
 highlight default link swiftKeywords Keyword
+highlight default link swiftMultiwordKeywords Keyword
 highlight default link swiftEscapedReservedWord Normal
 highlight default link swiftClosureArgument Operator
 highlight default link swiftAttributes PreProc
@@ -247,11 +273,15 @@ highlight default link swiftType Type
 highlight default link swiftImports Include
 highlight default link swiftPreprocessor PreProc
 highlight default link swiftMethod Function
+highlight default link swiftProperty Identifier
 
+highlight default link swiftDefinitionModifier Define
 highlight default link swiftConditionStatement PreProc
 highlight default link swiftAvailability Normal
 highlight default link swiftAvailabilityArg Normal
 highlight default link swiftPlatforms Keyword
+highlight default link swiftDebugIdentifier PreProc
+highlight default link swiftLineDirective PreProc
 
 " Force vim to sync at least x lines. This solves the multiline comment not
 " being highlighted issue
