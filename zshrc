@@ -71,3 +71,6 @@ export PATH=$PATH:$GOPATH/bin
 # export GOROOT=/usr/local/opt/go/libexec
 # export PATH=$PATH:$GOROOT/bin
 
+
+export PATH="$HOME/.fastlane/bin:$PATH"
+
