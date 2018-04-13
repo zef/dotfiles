@@ -47,6 +47,9 @@ vmap <D-‘> ]egv
 imap <D-“> <esc>[ea
 imap <D-‘> <esc>]ea
 
+" execute the selection and replace with result
+vnoremap <Leader>= c<C-r>=<C-r>"<CR>
+
 " duplicate line or selection
 nmap <D-D> yyp
 imap <D-D> <esc>yypgi<esc>ja
