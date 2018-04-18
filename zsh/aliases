@@ -7,6 +7,9 @@ alias npm='nocorrect npm'
 alias t='tail -f'
 alias v='mvim ./'
 
+alias pi='pod install'
+alias piu='pod install --repo-update'
+
 alias rp='touch tmp/restart.txt'
 alias rc='rails console'
 alias lsa='ls -a'
