@@ -159,29 +159,7 @@ end
 
 local function nextScreen()
   local win = hs.window.focusedWindow()
-	local frame = win:frame()
-	local thisScreen = win:screen():frame()
-	local nextScreen = win:screen():next():frame()
-
-  local adjustedFrame = frameOnScreen(frame, thisScreen)
-
-  local widthFactor = nextScreen.w / thisScreen.w
-  local heightFactor = nextScreen.h / thisScreen.h
-
-  local newFrame = hs.geometry.rect(
-    adjustedFrame.x * widthFactor + nextScreen.x,
-    adjustedFrame.y * heightFactor + nextScreen.y,
-    adjustedFrame.w * widthFactor,
-    adjustedFrame.h * heightFactor
-  )
-
-  -- logFrame(frame, "Frame")
-  -- logFrame(thisScreen, "This")
-  -- logFrame(nextScreen, "Next")
-  -- logFrame(newFrame, "New frame")
-  -- print("-----")
-
-	win:setFrame(newFrame)
+  win:moveToScreen(win:screen():next())
 end
 
 lastPosition = {}
