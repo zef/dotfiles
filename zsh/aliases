@@ -17,6 +17,9 @@ alias cw='compass --watch'
 
 alias gw='gem which'
 
+# view my latest branches
+alias gmyb='git branch --sort=-committerdate'
+
 alias ox='open *.xcworkspace'
 
 # https://coderwall.com/p/4tkkpq
