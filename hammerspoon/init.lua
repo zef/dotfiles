@@ -1,5 +1,8 @@
 hs.alert.show("HammerSpoon Reloaded...", 0.8)
 
+-- https://github.com/jasonrudolph/ControlEscape.spoon
+hs.loadSpoon('ControlEscape'):start()
+
 hs.window.animationDuration = 0
 
 local function log(string)
