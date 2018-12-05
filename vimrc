@@ -108,9 +108,6 @@ command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 " wrap with html link
 vmap <c-l> sta href=""<CR>f"a
 
-" Reveal file in Finder (Command-Option-Shift-r)
-map <D-‰> :!open -R '%'<CR><CR>
-
 " Rename current file (thanks Gary Bernhardt)
 function! RenameFile()
     let old_name = expand('%')
@@ -142,6 +139,12 @@ let g:surround_105  = "#{\r}" " 105 is the ASCII mapping for i
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
+
+" Reveal file in Finder (Command-Option-Shift-r)
+" map <D-‰> :!open -R '%'<CR><CR>
+" I couldn't get that mapping to work again after an update, switching to
+" leader-of for now
+map <Leader>of :!open -R '%'<CR><CR>
 
 " add custom commentary map
 vmap <D-/> \\
