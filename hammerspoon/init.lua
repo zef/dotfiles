@@ -203,6 +203,20 @@ local function manualReload()
   hs.reload()
 end
 
+-- I guess I didn't notice .rw and .ff at first, but this is more flexible
+local function skipiTunes(amount)
+  local now = hs.itunes.getPosition()
+  hs.itunes.setPosition(now + amount)
+end
+
+lastiTunesPosition = 0
+local function recordiTunesPosition()
+  lastiTunesPosition = hs.itunes.getPosition()
+end
+local function recalliTunesPosition()
+  hs.itunes.setPosition(lastiTunesPosition)
+end
+
 hs.hotkey.bind({"alt"}, "0", nextScreen)
 
 hs.hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
@@ -218,6 +232,11 @@ hs.hotkey.bind({"alt", "shift"}, "7", printCurrentPosition)
 hs.hotkey.bind({"alt"}, "8", recallRecordedPosition)
 
 hs.hotkey.bind({"alt"}, "9", manualReload)
+
+hs.hotkey.bind({"cmd", "ctrl"}, "Right", function() skipiTunes(5) end)
+hs.hotkey.bind({"cmd", "ctrl"}, "Left", function() skipiTunes(-5) end)
+hs.hotkey.bind({"cmd", "ctrl"}, "m", recordiTunesPosition)
+hs.hotkey.bind({"cmd", "ctrl", "alt"}, "space", recalliTunesPosition)
 
 -- hs.hotkey.bind({"alt"}, "`", copyMousePosition)
 
