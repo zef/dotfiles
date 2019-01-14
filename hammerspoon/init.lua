@@ -238,5 +238,27 @@ hs.hotkey.bind({"cmd", "ctrl"}, "Left", function() skipiTunes(-5) end)
 hs.hotkey.bind({"cmd", "ctrl"}, "m", recordiTunesPosition)
 hs.hotkey.bind({"cmd", "ctrl", "alt"}, "space", recalliTunesPosition)
 
+
+hs.urlevent.bind("playPause", function(eventName, params)
+  hs.itunes.playpause()
+end)
+
+hs.urlevent.bind("skipForward", function(eventName, params)
+  skipiTunes(5)
+end)
+
+hs.urlevent.bind("skipBack", function(eventName, params)
+  skipiTunes(-5)
+end)
+
+hs.urlevent.bind("storeiTunes", function(eventName, params)
+  recordiTunesPosition()
+end)
+
+hs.urlevent.bind("recalliTunes", function(eventName, params)
+  recalliTunesPosition()
+end)
+
+
 -- hs.hotkey.bind({"alt"}, "`", copyMousePosition)
 
