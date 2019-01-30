@@ -233,10 +233,27 @@ hs.hotkey.bind({"alt"}, "8", recallRecordedPosition)
 
 hs.hotkey.bind({"alt"}, "9", manualReload)
 
-hs.hotkey.bind({"cmd", "ctrl"}, "Right", function() skipiTunes(5) end)
-hs.hotkey.bind({"cmd", "ctrl"}, "Left", function() skipiTunes(-5) end)
+itunesF = hs.hotkey.bind({"cmd", "ctrl"}, "Right", function()
+  hs.alert.show("⇨")
+  skipiTunes(5)
+end)
+itunesB = hs.hotkey.bind({"cmd", "ctrl"}, "Left", function()
+  hs.alert.show("⇦")
+  skipiTunes(-5)
+end)
+
 hs.hotkey.bind({"cmd", "ctrl"}, "m", recordiTunesPosition)
 hs.hotkey.bind({"cmd", "ctrl", "alt"}, "space", recalliTunesPosition)
+
+local wf=hs.window.filter
+xcodeWF = wf.new("Xcode")
+xcodeWF:subscribe(wf.windowFocused, function()
+  itunesF:disable()
+  itunesB:disable()
+end):subscribe(wf.windowUnfocused, function()
+  itunesF:enable()
+  itunesB:enable()
+end)
 
 
 hs.urlevent.bind("playPause", function(eventName, params)
