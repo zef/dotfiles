@@ -1,6 +1,5 @@
 require 'rake'
 
-
 # Based on https://github.com/ryanb/dotfiles/blob/master/Rakefile
 # Just no .erb support
 desc "install the dot files into user's home directory"
@@ -8,7 +7,7 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
-    
+
     if File.exist?(File.join(ENV['HOME'], ".#{file}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file}")
         puts "Identical: ~/.#{file}"
@@ -32,6 +31,9 @@ task :install do
       link_file(file)
     end
   end
+
+  # custom stuff
+  system %Q{mkdir ~/.vimbackups}
 end
 
 def replace_file(file)
