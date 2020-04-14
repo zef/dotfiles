@@ -74,3 +74,8 @@ export PATH=$PATH:$GOPATH/bin
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 
+# GoLang
+export GOROOT=/Users/zef/code/verse/FBTT/go-ssb-bindings/.goroot
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/Users/zef/go
+export PATH=$GOPATH/bin:$PATH
