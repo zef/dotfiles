@@ -34,6 +34,11 @@ comment
 "this is a string no splell checking"
 "this is a string\" with an escaped quote"
 
+"""
+this is a multiline string
+\(1)
+"""
+
 // TODO: This is a todo comment
 // XXX: This is another todo comment
 // FIXME: this is another todo comment
@@ -49,6 +54,7 @@ if foo {
 5 // int
 
 5.5 // float
+45.4
 5e-2
 5E2
 5.5E-2
@@ -217,7 +223,7 @@ struct ArgumentList {
     var arguments: String[]
 
     init(argv: UnsafePointer<CString>,
-        count: CInt)
+         count: CInt)
     {
         foo
     }
@@ -243,9 +249,9 @@ func simpleDescription() -> String {
 
 let library = [
     Movie(name: "foo bar",
-        dfasdfsdfdirector: "someone",
-        foo: "bar",
-        bazzzer: "qux")
+          dfasdfsdfdirector: "someone",
+          foo: "bar",
+          bazzzer: "qux")
 ]
 
 
@@ -260,7 +266,9 @@ class MainViewController: UIViewController, UITableViewDataSource {}
 
 @IBAction func changePostFilter(sender: UISegmentedControl) {}
 override func prepareForSegue(segue: UIStoryboardSegue,
-   sender: AnyObject) {}
+                              sender: AnyObject) {}
+override func prepareForSegue(
+    segue: UIStoryboardSegue, sender: AnyObject) {}
 override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {}
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {}
 lazy var foo : String
@@ -287,7 +295,7 @@ func foo () {
 }
 
 let foo = CGRectMake(0, (5 - 2),
-    100, 200)
+                     100, 200)
 
 
 let dict = [
@@ -345,10 +353,10 @@ let data = NSData(contentsOfFile: path) else
 }
 
 UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
-    view.backgroundColor = UIColor.redColor()
-}) { finished in
-    print("indent?")
-}
+                               view.backgroundColor = UIColor.redColor()
+                           }, completion: { finished in
+                               print("indent?")
+                           })
 
 // Indent last line should hold
 self.init(className: "Item", dictionary: [
@@ -359,3 +367,25 @@ self.init(className: "Item", dictionary: [
     "summary": item.summary])
 
 XCAssertEqual(variables as NSDictionary, expectedVariables as NSDictionary, "\(template)")
+
+NSWorkspace.sharedWorkspace().notificationCenter.addObserver(
+    self, selector: #selector(self.activeApplicationChanged(_:)),
+    name: NSWorkspaceDidActivateApplicationNotification, object: nil
+)
+
+public func find(closure: @noescape Element throws -> Bool) rethrows -> Element? {
+
+}
+
+UIView.animate(withDuration: 0.2, animations: {
+                   self.foo.alpha = 1.0
+                   self.bar.alpha = 1.0
+               }, completion: { _ in
+                   completion()
+               })
+
+A.b().application(
+    application, didFinishLaunchingWithOptions: launchOptions)
+
+A.application(b(),
+              application, didFinishLaunchingWithOptions: launchOptions)
