@@ -141,10 +141,7 @@ map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
 
 " Reveal file in Finder (Command-Option-Shift-r)
-" map <D-‰> :!open -R '%'<CR><CR>
-" I couldn't get that mapping to work again after an update, switching to
-" leader-of for now
-map <Leader>of :!open -R '%'<CR><CR>
+map <D-‰> :!open -R '%'<CR><CR>
 
 " add custom commentary map
 vmap <D-/> \\
