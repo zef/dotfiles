@@ -48,6 +48,7 @@ git_bundles = [
   "git://github.com/jparise/vim-graphql.git",
   # "git://github.com/toyamarinyon/vim-swift.git",
   "git://github.com/keith/swift.vim",
+  "git://github.com/sirtaj/vim-openscad",
   # Ruby and related
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/tpope/vim-rails.git",
