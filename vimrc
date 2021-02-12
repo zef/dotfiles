@@ -139,6 +139,8 @@ let g:surround_105  = "#{\r}" " 105 is the ASCII mapping for i
 map <Leader>n :NERDTreeToggle<CR>
 map <D-R> :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
+let NERDTreeIgnore=['\.jpg$', '\.jpeg$', '\.png$']
+
 
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R '%'<CR><CR>
