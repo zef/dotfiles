@@ -24,3 +24,5 @@ alias ox='open *.xcworkspace'
 
 # https://coderwall.com/p/4tkkpq
 alias map="xargs -n1"
+
+alias beep="afplay /System/Library/Sounds/Blow.aiff"
