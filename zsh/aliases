@@ -26,3 +26,5 @@ alias ox='open *.xcworkspace'
 alias map="xargs -n1"
 
 alias beep="afplay /System/Library/Sounds/Blow.aiff"
+
+alias hg="history | grep "
