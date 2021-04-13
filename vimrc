@@ -278,8 +278,7 @@ if has("autocmd")
   augroup vimrcEx
     au!
 
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
+    autocmd FileType text,markdown setlocal textwidth=80
 
     " autocmd FileType html setlocal equalprg=tidy\ -q\ -i\ --show-body-only\ yes
 
