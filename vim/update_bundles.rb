@@ -46,6 +46,7 @@ git_bundles = [
   "git://github.com/groenewege/vim-less.git",
   "git://github.com/fatih/vim-go.git",
   "git://github.com/jparise/vim-graphql.git",
+  "git://github.com/jasonshell/vim-svg-indent.git",
   # "git://github.com/toyamarinyon/vim-swift.git",
   "git://github.com/keith/swift.vim",
   "git://github.com/sirtaj/vim-openscad",
