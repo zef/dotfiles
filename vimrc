@@ -280,6 +280,8 @@ if has("autocmd")
 
     autocmd FileType text,markdown setlocal textwidth=80
 
+    " leader b for bold in markdown
+    autocmd FileType markdown vmap <leader>b S*gvS*
     " autocmd FileType html setlocal equalprg=tidy\ -q\ -i\ --show-body-only\ yes
 
     " When editing a file, always jump to the last known cursor position.
