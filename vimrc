@@ -40,12 +40,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " Move lines up and down with help from Unimpaired
-nmap <D-“> [e
-nmap <D-‘> ]e
-vmap <D-“> [egv
-vmap <D-‘> ]egv
-imap <D-“> <esc>[ea
-imap <D-‘> <esc>]ea
+nmap <D-u> [e
+nmap <D-d> ]e
+vmap <D-u> [egv
+vmap <D-d> ]egv
+imap <D-u> <esc>[ea
+imap <D-d> <esc>]ea
 
 " execute the selection and replace with result
 vnoremap <Leader>= c<C-r>=<C-r>"<CR>
