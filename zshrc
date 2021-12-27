@@ -59,6 +59,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/lo
 export PATH="/Users/zef/code/dotfiles/bin:$PATH"
 export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:${PATH}"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
 
 # Faster ruby: https://gist.github.com/1688857
