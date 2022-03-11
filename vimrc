@@ -282,6 +282,15 @@ if has("autocmd")
 
     " leader b for bold in markdown
     autocmd FileType markdown vmap <leader>b S*gvS*
+
+    " leader i for inserting an image in markdown, with cursor over image URL
+    autocmd FileType markdown nmap <leader>i yss)I![
+    "
+    " leader l for formatting text and a link into proper link (in a list)
+    "     Some text here https://whatever.com
+    "     - [Some text here](https://whatever.com)
+    autocmd FileType markdown nmap <leader>l 0v/httpbeS]nsiW)dT]I- j0
+
     " autocmd FileType html setlocal equalprg=tidy\ -q\ -i\ --show-body-only\ yes
 
     " When editing a file, always jump to the last known cursor position.
