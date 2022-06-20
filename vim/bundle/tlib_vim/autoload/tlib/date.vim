@@ -3,8 +3,8 @@
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2010-03-25.
-" @Last Change: 2016-03-16.
-" @Revision:    40.0.34
+" @Last Change: 2017-09-06.
+" @Revision:    44.0.34
 
 
 if !exists('g:tlib#date#ShortDatePrefix') | let g:tlib#date#ShortDatePrefix = '20' | endif "{{{2
@@ -22,8 +22,9 @@ function! tlib#date#IsDate(text) abort "{{{3
 endf
 
 
-function! tlib#date#Format(secs1970) abort "{{{3
-    return strftime(g:tlib#date#date_format, a:secs1970)
+function! tlib#date#Format(...) abort "{{{3
+    let secs1970 = a:0 >= 1 ? a:1 : localtime()
+    return strftime(g:tlib#date#date_format, secs1970)
 endf
 
 
@@ -42,8 +43,12 @@ endf
 function! tlib#date#Parse(date, ...) "{{{3
     let min = a:0 >= 1 && a:1 ? 0 : 1
     let silent = a:0 >= 2 ? a:2 : 0
-    " TLogVAR a:date, min
+    Tlibtype 'tlib', a:date, min, silent
     let m = matchlist(a:date, '^\(\d\{2}\|\d\{4}\)-\(\d\{1,2}\)-\(\d\{1,2}\)$')
+    Tlibtype 'tlib', m
+    let year = ''
+    let month = ''
+    let days = ''
     if !empty(m)
         let year = m[1]
         let month = m[2]
@@ -63,6 +68,7 @@ function! tlib#date#Parse(date, ...) "{{{3
             endif
         endif
     endif
+    Tlibtype 'tlib', year, month, days
     if empty(m) || year == '' || month == '' || days == '' || 
                 \ month < min || month > 12 || days < min || days > 31
         if !silent
@@ -72,6 +78,7 @@ function! tlib#date#Parse(date, ...) "{{{3
     endif
     if strlen(year) == 2
         let year = g:tlib#date#ShortDatePrefix . year
+        Tlibtype 'tlib', year
     endif
     return [0 + year, 0 + month, 0 + days]
 endf
