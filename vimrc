@@ -256,6 +256,20 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+
+
+" Tabularize when typing |, only used in markdown
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -279,6 +293,7 @@ if has("autocmd")
     au!
 
     autocmd FileType text,markdown setlocal textwidth=80
+    autocmd FileType markdown inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
     " leader b for bold in markdown
     autocmd FileType markdown vmap <leader>b S*gvS*
