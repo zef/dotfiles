@@ -3,9 +3,20 @@
 # originally here: http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
 git_bundles = [
-  # "https://github.com/astashov/vim-ruby-debugger.git",
+  # Incompatibility problem with vim-cycle:
   # "https://github.com/tpope/vim-speeddating.git",
+  #
   # "https://github.com/mjbrownie/swapit.git",
+  #
+  # To Try:
+  # vim-airline
+  #
+  # not sure how this compares to the one from keith
+  # https://github.com/apple/swift/tree/main/utils/vim
+  #
+  #
+  # https://github.com/vim-syntastic/syntastic
+  # https://github.com/pechorin/any-jump.vim
   #
   # General
   "https://github.com/zef/vim-cycle.git",
@@ -22,16 +33,18 @@ git_bundles = [
   "https://github.com/MarcWeber/vim-addon-mw-utils.git",
   "https://github.com/tomtom/tlib_vim.git",
   "https://github.com/mileszs/ack.vim.git",
-  "https://github.com/tsaleh/vim-align.git",
+  # "https://github.com/tsaleh/vim-align.git",
   "https://github.com/ervandew/supertab.git",
   "https://github.com/scrooloose/nerdtree.git",
   "https://github.com/kana/vim-smartpunc.git",
   "https://github.com/altercation/vim-colors-solarized.git",
-  "https://github.com/aniero/vim-copy-as-rtf.git",
+  "https://github.com/zerowidth/vim-copy-as-rtf.git",
   "https://github.com/airblade/vim-gitgutter.git",
+  "https://github.com/godlygeek/tabular.git",
   # Language/syntax specific
   "https://github.com/davidoc/taskpaper.vim.git",
-  "https://github.com/tpope/vim-markdown.git",
+  "https://github.com/preservim/vim-markdown.git",
+  # "https://github.com/tpope/vim-markdown.git",
   "https://github.com/tpope/vim-liquid.git",
   "https://github.com/timcharper/textile.vim.git",
   "https://github.com/kchmck/vim-coffee-script.git",
@@ -55,10 +68,10 @@ git_bundles = [
   "https://github.com/tpope/vim-rails.git",
   "https://github.com/tpope/vim-endwise.git",
   "https://github.com/tpope/vim-haml.git",
-  "https://github.com/tpope/vim-cucumber.git",
   "https://github.com/kana/vim-textobj-user.git",
   "https://github.com/nelstrom/vim-textobj-rubyblock.git",
   "https://github.com/tsaleh/vim-shoulda.git",
+  # "https://github.com/tpope/vim-cucumber.git",
   "https://github.com/ecomba/vim-ruby-refactoring.git"
 ]
 
