@@ -58,6 +58,7 @@ cdpath=($HOME/code)
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
 export PATH="/Users/zef/code/dotfiles/bin:$PATH"
 export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:${PATH}"
+export PATH="/Library/TeX/texbin:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
