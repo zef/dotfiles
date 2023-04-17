@@ -44,6 +44,7 @@ git_bundles = [
   # Language/syntax specific
   "https://github.com/davidoc/taskpaper.vim.git",
   "https://github.com/preservim/vim-markdown.git",
+  "https://github.com/wilriker/gcode.vim.git",
   # "https://github.com/tpope/vim-markdown.git",
   "https://github.com/tpope/vim-liquid.git",
   "https://github.com/timcharper/textile.vim.git",
