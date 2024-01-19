@@ -125,6 +125,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 # https://stackoverflow.com/questions/64799841/how-to-stop-docker-and-kubernetes-using-docker-desktop
 # macro to kill the docker desktop app and the VM (excluding vmnetd -> it's a service)
 # function kdo() {
