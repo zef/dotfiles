@@ -17,7 +17,9 @@ let s:options['global'] = [
   \ ['if', 'unless'],
   \ ['true', 'false'],
   \ ['YES', 'NO'],
+  \ ['yes', 'no'],
   \ ['on', 'off'],
+  \ ['running', 'stopped'],
   \ ['first', 'last'],
   \ ['else', 'else if'],
 \]
@@ -49,6 +51,7 @@ let s:options['global'] = s:options['global'] + [
   \ ['small', 'large'],
   \ ['even', 'odd'],
   \ ['inside', 'outside'],
+  \ ['push', 'pull'],
 \]
 
 " ruby/eruby
@@ -58,9 +61,10 @@ let s:options['global'] = s:options['global'] + [
   \ ['present', 'blank'],
   \ ['while', 'until'],
   \ ['only', 'except'],
-  \ ['match', 'get', 'post', 'put']
+  \ ['create', 'update'],
+  \ ['new', 'edit'],
+  \ ['get', 'post', 'put', 'patch']
 \]
-
 
 " Takes one or two arguments:
 "
@@ -216,7 +220,6 @@ call AddCycleGroup('swift', ['let', 'var'])
 call AddCycleGroup('swift', ['open', 'public', 'internal', 'fileprivate', 'private'])
 call AddCycleGroup('swift', ['class', 'struct', 'enum', 'protocol', 'extension'])
 call AddCycleGroup('swift', ['set', 'get'])
-
 
 nnoremap <silent> <Plug>CycleNext     :<C-U>call <SID>Cycle(1)<CR>
 nnoremap <silent> <Plug>CyclePrevious :<C-U>call <SID>Cycle(-1)<CR>
