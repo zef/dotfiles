@@ -145,13 +145,6 @@ let NERDTreeIgnore=['\.jpg$', '\.jpeg$', '\.png$']
 " Reveal file in Finder (Command-Option-Shift-r)
 map <D-‰> :!open -R '%'<CR><CR>
 
-" add custom commentary map
-vmap <D-/> \\
-nmap <D-/> \\\
-" Ideally this would find the cursor position before and after, and adjust for
-" the movement, I'll assume that it's 2 characters forward though for now.
-imap <D-/> <esc>V\\gv<esc>2la
-
 map <Leader>gg :call ToggleGitGutter()<CR>
 map <Leader>hh :call HexHighlight()<CR>
 map <Leader>cc :set cursorcolumn<CR>
