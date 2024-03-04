@@ -286,6 +286,8 @@ if has("autocmd")
     au!
 
     autocmd FileType text,markdown setlocal textwidth=80
+    " autocmd FileType text,markdown set formatexpr=MarkdownSentenceFormat()
+    " autocmd FileType markdown set formatexpr=FormatBySentence(v:lnum,v:lnum+v:count-1)
     autocmd FileType markdown inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
     " leader b for bold in markdown
@@ -293,11 +295,22 @@ if has("autocmd")
 
     " leader i for inserting an image in markdown, with cursor over image URL
     autocmd FileType markdown nmap <leader>i yss)I![
-    "
+
+    " leader l (in visual mode ) for formatting selected text as link text,
+    " and allowing a URL to be entered
+    autocmd FileType markdown vmap <leader>l S]f]a(
+
     " leader l for formatting text and a link into proper link (in a list)
     "     Some text here https://whatever.com
     "     - [Some text here](https://whatever.com)
-    autocmd FileType markdown nmap <leader>l 0v/httpbeS]nsiW)dT]I- j0
+    autocmd FileType markdown nmap <leader>l 0v/httpBES]nsiW)dT]I- j0
+    "
+    " leader f for adding a footnote after the cursor
+    autocmd FileType markdown nmap <leader>f a[1](#footnotesF1
+    "
+    " leader h for adding a --- header
+    autocmd FileType markdown nmap <leader>h I---<Esc>
+
 
     " autocmd FileType html setlocal equalprg=tidy\ -q\ -i\ --show-body-only\ yes
 
