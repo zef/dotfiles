@@ -127,6 +127,9 @@ command! FormatJSON %!jq '.'
 
 """"""""""" Plugin configuration
 
+nmap <D-/> gcc
+vmap <D-/> gc
+
 " I use surround way more than substitute...
 nmap s <Plug>Ysurround
 nmap S <Plug>YSurround
