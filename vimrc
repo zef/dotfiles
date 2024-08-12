@@ -15,7 +15,7 @@ set numberwidth=1
 
 set listchars=tab:▸\ ,eol:¬
 set ts=2 sts=2 sw=2 expandtab
-set formatoptions=cq
+set formatoptions=cqj
 
 set wildmenu
 set showmode
