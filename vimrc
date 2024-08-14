@@ -155,9 +155,17 @@ map <Leader>cc :set cursorcolumn<CR>
 " Sparkup is fantastic! https://github.com/rstacruz/sparkup
 let g:sparkupNextMapping = '<c-j>'
 
-
 let g:CommandTMaxHeight = 14
 let g:CommandTMinHeight = 14
+
+
+" might try this sometime, but not right now
+let g:vim_markdown_folding_disabled = 1
+
+" get rid of annoying `o` behavior
+let g:vim_markdown_new_list_item_indent = 0
+
+" call AddCycleGroup(['one', 'two', 'three'])
 
 """"""""""""""""""""""""""""""""
 
