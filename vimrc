@@ -50,6 +50,9 @@ imap <D-d> <esc>]ea
 " execute the selection and replace with result
 vnoremap <Leader>= c<C-r>=<C-r>"<CR>
 
+" super custom relpace UIColor with literal
+" nnoremap <Leader>c cw#colorLiteral<esc>f:llvt,c<C-r>=<C-r>"<CR><esc>f:llvt,c<C-r>=<C-r>"<CR><esc>f:llvt,c<C-r>=<C-r>"<CR><esc>
+
 " duplicate line or selection
 nmap <D-D> yyp
 imap <D-D> <esc>yypgi<esc>ja
@@ -260,6 +263,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" function! FormatBySentence(start, end)
+"     silent execute a:start.','.a:end.'s/[.!?]\zs /\r/g'
+" endfunction
 
 
 " Tabularize when typing |, only used in markdown
@@ -287,7 +293,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.txt setfiletype text
   autocmd BufNewFile,BufRead Podfile.lock setfiletype yaml
 
-  autocmd Filetype swift setlocal ts=4 sts=4 sw=4
+  autocmd Filetype swift setlocal ts=2 sts=2 sw=2
 
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
