@@ -91,14 +91,20 @@ source ~/.zsh/aliases
 setopt auto_cd
 cdpath=($HOME/code)
 
+# use this to source ESP-IDF
+alias get_idf='. $HOME/esp/v5.1.2/esp-idf/export.sh'
+export IDF_PATH=~/esp/v5.1.2/esp-idf
+
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin
 export PATH="/Users/zef/code/dotfiles/bin:$PATH"
 export PATH="/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:${PATH}"
 export PATH="/Library/TeX/texbin:$PATH"
+export PATH="$IDF_PATH/tools:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
+
 
 # Faster ruby: https://gist.github.com/1688857
 export RUBY_GC_MALLOC_LIMIT=60000000
