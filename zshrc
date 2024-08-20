@@ -10,7 +10,7 @@ else
   export BUNDLER_EDITOR='mvim'
 fi
 
-export NODE_PATH='/usr/local/lib/node'
+# export NODE_PATH='/usr/local/lib/node'
 
 code=~/code
 
@@ -111,12 +111,6 @@ export RUBY_GC_MALLOC_LIMIT=60000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000
 
 
-# export GOPATH=$HOME/golang
-# export PATH=$PATH:$GOPATH/bin
-# export GOROOT=/usr/local/opt/go/libexec
-# export PATH=$PATH:$GOROOT/bin
-
-
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 # GoLang
@@ -134,6 +128,11 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# For Fastlane
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 
 
 # https://stackoverflow.com/questions/64799841/how-to-stop-docker-and-kubernetes-using-docker-desktop
