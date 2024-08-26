@@ -4,8 +4,8 @@ set nocompatible
 let mapleader = '-'
 command Config e ~/.vimrc
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+filetype plugin indent on
+execute pathogen#infect()
 
 colorscheme kiwi
 set guifont=Menlo:h16
