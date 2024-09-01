@@ -200,6 +200,7 @@ local function copyMousePosition()
 end
 
 local function manualReload()
+  -- hs.alert.show("Reloading Hammerspoon")
   hs.reload()
 end
 
@@ -221,7 +222,7 @@ hs.hotkey.bind({"alt"}, "0", nextScreen)
 
 hs.hotkey.bind({"alt"}, "1", function() cyclePositionGroup("halves") end)
 hs.hotkey.bind({"alt"}, "2", function() cyclePositionGroup("center") end)
-hs.hotkey.bind({"alt", "cmd"}, "2", function() cyclePositionGroup("centerSides") end)
+-- hs.hotkey.bind({"alt", "cmd"}, "2", function() cyclePositionGroup("centerSides") end)
 hs.hotkey.bind({"alt"}, "3", function() cyclePositionGroup("horizontalThirds") end)
 hs.hotkey.bind({"alt"}, "4", function() cyclePositionGroup("quarters") end)
 hs.hotkey.bind({"alt"}, "5", function() cyclePositionGroup("verticalSections") end)
