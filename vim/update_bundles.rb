@@ -73,6 +73,8 @@ git_bundles = [
   "https://github.com/kana/vim-textobj-user.git",
   "https://github.com/nelstrom/vim-textobj-rubyblock.git",
   "https://github.com/tsaleh/vim-shoulda.git",
+  # "https://github.com/nathangrigg/vim-beancount.git",
+  "https://github.com/ledger/vim-ledger.git",
   # "https://github.com/tpope/vim-cucumber.git",
   "https://github.com/ecomba/vim-ruby-refactoring.git"
 ]
