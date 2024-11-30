@@ -33,6 +33,9 @@ set spelllang=en_us
 inoremap <D-CR> <esc>o
 inoremap <S-CR> <esc>O
 
+nnoremap <leader>d o<C-R>=strftime("%Y-%m-%d ")<CR>
+
+
 " directional window movements in one action
 map <c-h> <c-w>h
 map <c-j> <c-w>j

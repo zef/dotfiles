@@ -134,6 +134,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 
+export LEDGER_FILE=~/code/accounting/personal.journal
+
 
 # https://stackoverflow.com/questions/64799841/how-to-stop-docker-and-kubernetes-using-docker-desktop
 # macro to kill the docker desktop app and the VM (excluding vmnetd -> it's a service)
