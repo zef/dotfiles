@@ -72,6 +72,9 @@ imap <D-]> <esc>>>gi<esc>lla
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
+" keep pasted text in buffer when pasting in visual mode
+xnoremap <leader>p "_dP
+
 " Search and replace word under cursor
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Search and replace visual selection
