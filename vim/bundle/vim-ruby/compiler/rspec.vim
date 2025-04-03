@@ -2,7 +2,6 @@
 " Language:		RSpec
 " Maintainer:		Tim Pope <vimNOSPAM@tpope.org>
 " URL:			https://github.com/vim-ruby/vim-ruby
-" Release Coordinator:	Doug Kearns <dougkearns@gmail.com>
 
 if exists("current_compiler")
   finish
@@ -22,9 +21,11 @@ CompilerSet errorformat=
     \%f:%l:\ %tarning:\ %m,
     \%E%.%#:in\ `load':\ %f:%l:%m,
     \%E%f:%l:in\ `%*[^']':\ %m,
-    \%-Z\ \ \ \ \ \#\ %f:%l:%.%#,
-    \%E\ \ %\\d%\\+)%.%#,
+    \%-Z\ \ \ \ \ %\\+\#\ %f:%l:%.%#,
+    \%E\ \ \ \ \ Failure/Error:\ %m,
+    \%E\ \ \ \ \ Failure/Error:,
     \%C\ \ \ \ \ %m,
+    \%C%\\s%#,
     \%-G%.%#
 
 let &cpo = s:cpo_save

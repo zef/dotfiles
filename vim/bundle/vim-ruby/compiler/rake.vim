@@ -2,7 +2,6 @@
 " Language:		Rake
 " Maintainer:		Tim Pope <vimNOSPAM@tpope.org>
 " URL:			https://github.com/vim-ruby/vim-ruby
-" Release Coordinator:	Doug Kearns <dougkearns@gmail.com>
 
 if exists("current_compiler")
   finish
@@ -20,12 +19,12 @@ CompilerSet makeprg=rake
 
 CompilerSet errorformat=
       \%D(in\ %f),
-      \%\\s%#from\ %f:%l:%m,
-      \%\\s%#from\ %f:%l:,
-      \%\\s%##\ %f:%l:%m,
-      \%\\s%##\ %f:%l,
-      \%\\s%#[%f:%l:\ %#%m,
-      \%\\s%#%f:%l:\ %#%m,
+      \%\\s%#%\\d%#:%#\ %#from\ %f:%l:%m,
+      \%\\s%#%\\d%#:%#\ %#from\ %f:%l:,
+      \%\\s%##\ %f:%l:%m%\\&%.%#%\\D:%\\d%\\+:%.%#,
+      \%\\s%##\ %f:%l%\\&%.%#%\\D:%\\d%\\+,
+      \%\\s%#[%f:%l:\ %#%m%\\&%.%#%\\D:%\\d%\\+:%.%#,
+      \%\\s%#%f:%l:\ %#%m%\\&%.%#%\\D:%\\d%\\+:%.%#,
       \%\\s%#%f:%l:,
       \%m\ [%f:%l]:,
       \%+Erake\ aborted!,

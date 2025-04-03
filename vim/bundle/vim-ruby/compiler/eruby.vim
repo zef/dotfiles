@@ -2,7 +2,6 @@
 " Language:		eRuby
 " Maintainer:		Doug Kearns <dougkearns@gmail.com>
 " URL:			https://github.com/vim-ruby/vim-ruby
-" Release Coordinator:	Doug Kearns <dougkearns@gmail.com>
 
 if exists("current_compiler")
   finish
@@ -28,8 +27,8 @@ CompilerSet errorformat=
     \%W%f:%l:\ warning:\ %m,
     \%E%f:%l:in\ %*[^:]:\ %m,
     \%E%f:%l:\ %m,
-    \%-C%\tfrom\ %f:%l:in\ %.%#,
-    \%-Z%\tfrom\ %f:%l,
+    \%-C%\t%\\d%#:%#\ %#from\ %f:%l:in\ %.%#,
+    \%-Z%\t%\\d%#:%#\ %#from\ %f:%l,
     \%-Z%p^,
     \%-G%.%#
 

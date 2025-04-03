@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 describe "Indenting" do
-  after :each do
-    vim.command 'let g:ruby_indent_access_modifier_style = "normal"'
-  end
-
   specify "default indented access modifiers" do
-    assert_correct_indenting <<-EOF
+    assert_correct_indenting <<~EOF
       class OuterClass
 
         private :method
@@ -50,7 +46,7 @@ describe "Indenting" do
   specify "indented access modifiers" do
     vim.command 'let g:ruby_indent_access_modifier_style = "indent"'
 
-    assert_correct_indenting <<-EOF
+    assert_correct_indenting <<~EOF
       class OuterClass
 
         private :method
@@ -94,7 +90,7 @@ describe "Indenting" do
   specify "outdented access modifiers" do
     vim.command 'let g:ruby_indent_access_modifier_style = "outdent"'
 
-    assert_correct_indenting <<-EOF
+    assert_correct_indenting <<~EOF
       class OuterClass
 
         private :method
